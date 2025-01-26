@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "concurrently 'npm run dev:style' 'next dev'",
+    "dev:style": "unocss --watch",
+    "build:style": "unocss",
+    "build": "npm run build:style && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -22,8 +24,8 @@
     "@types/nprogress": "^0.2.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@unocss/cli": "^65.4.3",
     "@unocss/eslint-config": "^65.4.3",
-    "@unocss/postcss": "^65.4.3",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "^10.0.1",

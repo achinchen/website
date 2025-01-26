@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './styles/index.css';
-import 'uno.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,7 +13,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='overflow-x-hidden bg-white text-black antialiased transition-colors dark:bg-gray-900 dark:text-white'>{children}</body>
+      <body className='overflow-x-hidden bg-white text-black antialiased transition-colors dark:bg-gray-900 dark:text-white'>
+        <main className="mx-auto max-w-full px-4 sm:px-6 md:max-w-3xl lg:max-w-5xl">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
