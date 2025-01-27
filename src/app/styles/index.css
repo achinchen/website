@@ -1,5 +1,4 @@
 @import '@unocss/reset/sanitize/sanitize.css';
 @import '@unocss/reset/sanitize/assets.css';
-@import './globals.css';
-@import './uno.css';
 @unocss all;
+@import './globals.css';

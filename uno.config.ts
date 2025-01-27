@@ -1,14 +1,6 @@
 import { defineConfig, presetUno, presetWebFonts, presetIcons } from 'unocss';
 
 export default defineConfig({
-  cli: {
-    entry: [
-      {
-        patterns: ['./src/**/*.{ts,tsx}'],
-        outFile: './src/app/styles/uno.css',
-      },
-    ],
-  },
   extendTheme: (theme) => {
     return { ...theme, colors: { ...theme.colors, primary: theme.colors.red, gray: theme.colors.neutral } };
   },
@@ -32,8 +24,6 @@ export default defineConfig({
       fonts: {
         default:
           "'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang HK', 'PingFang-SC-Regular', 'PingFang', 'Hiragino Sans GB', 'STHeiti', 'Microsoft JhengHei', sans-serif",
-        sans: "ui-sans-serif, system-ui, BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-        serif: "ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif",
       },
     }),
   ],
