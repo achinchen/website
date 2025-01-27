@@ -2,3 +2,4 @@
 @import '@unocss/reset/sanitize/assets.css';
 @import './globals.css';
 @import './uno.css';
+@unocss all;

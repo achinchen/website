@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "github-slugger": "^2.0.0",
     "next": "15.1.6",
     "next-seo": "^6.6.0",
     "next-themes": "^0.4.4",
@@ -26,7 +28,10 @@
     "@types/react-dom": "^19",
     "@unocss/cli": "^65.4.3",
     "@unocss/eslint-config": "^65.4.3",
+    "@iconify-json/mdi": "^1.2.3",
+    "concurrently": "^9.1.2",
     "eslint": "^9",
+    "eslint-config-import": "^0.13.0",
     "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
