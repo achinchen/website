@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Footer from '~/components/Footer';
 import './styles/index.css';
 import Header from '~/components/Header';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-100vh overflow-x-hidden bg-white text-black antialiased transition-colors dark:bg-gray-900 dark:text-white">
-        <Header />
-        <main className="mx-auto max-w-full px-4 lg:max-w-5xl md:max-w-3xl sm:px-6">{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class">
+          <Header />
+          <main className="mx-auto max-w-full px-4 lg:max-w-5xl md:max-w-3xl sm:px-6">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

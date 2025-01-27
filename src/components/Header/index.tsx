@@ -1,7 +1,5 @@
 import Link from '~/components/Link';
-// import MobileNav from '@/components/MobileNav';
-// import SectionContainer from '@/components/SectionContainer';
-// import ThemeSwitch from '@/components/ThemeSwitch';
+import ThemeSwitch from './components/ThemeSwitch';
 import { SITE } from '~/configs';
 import { TITLE } from './constants';
 
@@ -16,9 +14,7 @@ export default function Header() {
         >
           {TITLE}
         </Link>
-        {/* 
-          <ThemeSwitch />
-          <MobileNav /> */}
+        <ThemeSwitch />
       </div>
     </header>
   );

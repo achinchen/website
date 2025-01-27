@@ -81,7 +81,7 @@ export default function Home() {
         <p className="whitespace-break-spaces text-wrap leading-loose md:leading-3em">{T.description.join('\n')} </p>
       </header>
       <main className="my-4 transition-colors divide-y divide-gray-200 dark:divide-gray-700">
-        <h2 className="my-8 text-2xl dark:text-dark">{T.latest}</h2>
+        <h2 className="my-8 text-2xl">{T.latest}</h2>
         <PostList posts={posts} />
       </main>
     </Fragment>

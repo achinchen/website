@@ -14,8 +14,6 @@ type Props = {
 };
 
 export default function PostList({ posts = [] }: Props) {
-  const locale = 'zh-TW';
-
   return (
     <ul className="transition-colors divide-y divide-gray-200 dark:divide-gray-700">
       {!posts.length && 'No posts found.'}
@@ -28,7 +26,7 @@ export default function PostList({ posts = [] }: Props) {
                 <dl>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-sm text-gray-500 font-medium leading-6 transition-colors md:text-base dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date, locale)}</time>
+                    <time dateTime={date}>{formatDate(date)}</time>
                   </dd>
                 </dl>
                 <main className="xl:col-span-3 space-y-3">

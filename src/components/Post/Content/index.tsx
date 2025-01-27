@@ -35,8 +35,6 @@ export default function PostLayout({ post, next, previous, children }: Props) {
     body: { raw },
   } = post;
 
-  const locale = 'zh-TW';
-
   return (
     <article>
       <div className="transition-colors divide-y divide-gray-200 dark:divide-gray-700">
@@ -46,7 +44,7 @@ export default function PostLayout({ post, next, previous, children }: Props) {
             <dl className="space-y-10">
               <dt className="sr-only">{T['published-time']}</dt>
               <dd className="text-base text-gray-500 font-medium leading-6 transition-colors dark:text-gray-400">
-                <time dateTime={date}>{formatDate(date, locale)}</time>
+                <time dateTime={date}>{formatDate(date)}</time>
               </dd>
             </dl>
           </div>
