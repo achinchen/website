@@ -1,10 +1,10 @@
-const fqdn = 'https://achin.dev/';
+const fqdn = 'https://achin.dev';
 const logoPath = '/logo.png';
 const bannerPath = '/og-image.png';
 
 export const SITE = {
   title: 'Chin Chen',
-  titleShort: 'Blog',
+  titleShort: `Chins' Blog`,
   description: `Chin's Portfolio`,
   author: 'Chin Chen',
   credit: 'Chin Chen',
