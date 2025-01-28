@@ -1,77 +1,25 @@
 import type { Metadata, NextPage } from 'next';
 import { Fragment } from 'react';
+import { notFound } from 'next/navigation';
 import { ArticleJsonLd } from 'next-seo';
+import { SITE } from '~/configs';
 import PostContent from '~/components/Post/Content';
 import getOgImageUrl from '~/helpers/get-og-image-url';
-import { SITE } from '~/configs';
+import { getPostBySlug, getPostIndexBySlug, getPosts } from '~/helpers/get-posts';
 
-const post = {
-  title: 'Understanding React Server Components',
-  description: "A deep dive into React Server Components and how they can improve your application's performance",
-  date: '2024-03-20',
-  path: '/posts/understanding-react-server-components',
-  socialImage: null,
-  body: {
-    code: `
-      # Understanding React Server Components
+export const revalidate = 1800;
+export const dynamicParams = true;
 
-      React Server Components (RSC) represent a paradigm shift in how we build React applications. 
-      They allow components to run on the server, reducing the JavaScript bundle sent to the client 
-      and improving performance.
+export const generateStaticParams = async () => getPosts().map(({ slug }) => ({ slug }));
 
-      ## Key Benefits
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) return notFound();
 
-      - Reduced Client-side JavaScript
-      - Improved Initial Page Load
-      - Better SEO Performance
-      - Direct Backend Access
+  const { description, title, date, path, image } = post;
 
-      ## How They Work
-
-      Server Components run on the server and can access server-side resources directly. 
-      They're pre-rendered and send only the necessary HTML to the client, reducing the 
-      JavaScript bundle size significantly.
-
-      ## Use Cases
-
-      1. Data Fetching
-      2. Database Access
-      3. File System Operations
-      4. Complex Calculations
-
-      ## Best Practices
-
-      - Keep server components pure
-      - Use client components for interactivity
-      - Leverage streaming for better UX
-      - Consider the data requirements carefully
-    `,
-    raw: 'dummy raw content',
-  },
-};
-
-export async function generateMetadata(): Promise<Metadata> {
-  // { params, searchParams }: Props,
-  // parent: ResolvingMetadata
-  const {
-    description,
-    title,
-    date,
-    path,
-    socialImage,
-    body: { code },
-  } = post;
-
-  // read route params
-  // const id = (await params).id
-
-  // // fetch data
-  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
-
-  // // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
-
-  const ogImage = getOgImageUrl(socialImage);
+  const ogImage = getOgImageUrl(image);
   const url = `${SITE.fqdn}${path}`;
 
   return {
@@ -87,16 +35,32 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
       type: 'article',
-      publishedTime: post.date,
+      publishedTime: date,
       authors: [SITE.author],
     },
   };
-}
+};
 
-const PostPage: NextPage = () => {
-  const { description, title, date, path, socialImage } = post;
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+const PostPage: NextPage<Props> = async ({ params }) => {
+  const { slug } = await params;
+  const postIndex = getPostIndexBySlug(slug);
+  if (postIndex === -1) return notFound();
+
+  const posts = getPosts();
+  const post = posts[postIndex];
+
+  const previous = postIndex ? posts[postIndex - 1] : null;
+  const next = postIndex !== posts.length - 1 ? posts[postIndex + 1] : null;
+
+  const { description, title, date, path, image } = post;
   const url = `${SITE.fqdn}${path}`;
-  const ogImage = getOgImageUrl(socialImage);
+  const ogImage = getOgImageUrl(image);
 
   return (
     <Fragment>
@@ -110,7 +74,7 @@ const PostPage: NextPage = () => {
         authorName={SITE.author}
         description={description}
       />
-      <PostContent post={post} previous={null} next={null} />
+      <PostContent post={post} previous={previous} next={next} />
     </Fragment>
   );
 };

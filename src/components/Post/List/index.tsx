@@ -13,10 +13,9 @@ type Props = {
   posts: PostMeta[];
 };
 
-export default function PostList({ posts = [] }: Props) {
+export default function PostList({ posts }: Props) {
   return (
     <ul className="transition-colors divide-y divide-gray-200 dark:divide-gray-700">
-      {!posts.length && 'No posts found.'}
       {posts.map((post) => {
         const { slug, date, title, description, path } = post;
         return (
