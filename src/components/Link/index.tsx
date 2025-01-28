@@ -1,6 +1,6 @@
 import { default as NextLink } from 'next/link';
 
-type Props = React.ComponentPropsWithoutRef<'a'>;
+export type Props = React.ComponentPropsWithoutRef<'a'>;
 
 const Link = ({ href, children, ...props }: Props) => {
   if (!href) return null;
@@ -27,7 +27,7 @@ const Link = ({ href, children, ...props }: Props) => {
   return (
     <a target="_blank" rel="noopener noreferrer" href={href} {...props}>
       {children}
-      {typeof children === 'string' && <div className="i-mdi-launch ml-1 inline-block h-4 w-4" />}
+      {typeof children === 'string' && <span className="i-mdi-launch ml-1 inline-block h-4 w-4 color-inherit" />}
     </a>
   );
 };

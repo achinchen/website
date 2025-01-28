@@ -1,23 +1,9 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-
-html,
-body {
-  @apply max-width-100vw overflow-x-hidden;
+html {
+  @apply max-w-100vw overflow-x-hidden;
 }
 
 body {
-  @apply color-[var(--foreground)] background-[var(--background)] font-default;
+  @apply font-default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,7 +13,7 @@ body {
 }
 
 a {
-  @apply color-inherit decoration-none;
+  @apply color-inherit;
 }
 
 button {

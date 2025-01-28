@@ -2,57 +2,7 @@ import { Fragment } from 'react';
 import { ArticleJsonLd } from 'next-seo';
 import { SITE } from '~/configs';
 import PostList from '~/components/Post/List';
-
-const posts = [
-  {
-    slug: 'getting-started-with-web-development',
-    date: '2024-03-15',
-    title: 'Getting Started with Modern Web Development',
-    description:
-      'Learn the fundamentals of modern web development, including React, TypeScript, and Next.js. This comprehensive guide will help you understand the basics and get started with your first project.',
-    path: '/posts/getting-started-with-web-development',
-  },
-  {
-    slug: 'mastering-typescript',
-    date: '2024-03-10',
-    title: 'Mastering TypeScript: A Comprehensive Guide',
-    description:
-      'Dive deep into TypeScript features, from basic types to advanced concepts like generics and utility types. Discover how TypeScript can improve your development workflow and code quality.',
-    path: '/posts/mastering-typescript',
-  },
-  {
-    slug: 'react-best-practices-2024',
-    date: '2024-03-05',
-    title: 'React Best Practices for 2024',
-    description:
-      'Explore the latest React best practices, including hooks, state management, and performance optimization techniques. Learn how to write clean, maintainable React code.',
-    path: '/posts/react-best-practices-2024',
-  },
-  {
-    slug: 'nextjs-server-components',
-    date: '2024-02-28',
-    title: 'Understanding Next.js Server Components',
-    description:
-      'A detailed look at Next.js Server Components and how they revolutionize web development. Learn when and how to use them effectively in your applications.',
-    path: '/posts/nextjs-server-components',
-  },
-  {
-    slug: 'tailwind-css-tips',
-    date: '2024-02-20',
-    title: 'Advanced Tailwind CSS Tips and Tricks',
-    description:
-      'Discover advanced Tailwind CSS techniques to streamline your styling workflow. Learn about custom configurations, responsive design, and dark mode implementation.',
-    path: '/posts/tailwind-css-tips',
-  },
-  {
-    slug: 'web-performance-optimization',
-    date: '2024-02-15',
-    title: 'Web Performance Optimization Techniques',
-    description:
-      "Learn essential techniques for optimizing web performance, including code splitting, lazy loading, and image optimization. Improve your website's speed and user experience.",
-    path: '/posts/web-performance-optimization',
-  },
-];
+import { getPosts } from '~/helpers/get-posts';
 
 const T = {
   title: 'Hey, this is Chin.',
@@ -63,7 +13,13 @@ const T = {
   latest: 'Latest posts',
 };
 
+export const revalidate = 1800;
+
+export const dynamicParams = false;
+
 export default function Home() {
+  const posts = getPosts().slice(0, 5);
+
   return (
     <Fragment>
       <ArticleJsonLd
