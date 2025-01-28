@@ -22,6 +22,12 @@ export const metadata: Metadata = {
     ],
     type: 'website',
   },
+  alternates: {
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml' }],
+      'application/atom+xml': [{ url: '/atom.xml' }],
+    },
+  },
 };
 
 export default function RootLayout({

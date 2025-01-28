@@ -42,9 +42,9 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 };
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 const PostPage: NextPage<Props> = async ({ params }) => {

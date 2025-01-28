@@ -1,8 +1,11 @@
+import type { Visitor } from 'unist-util-visit';
 import imageSize from 'image-size';
 import path from 'path';
 import { getPlaiceholder } from 'plaiceholder';
-import { Node, visit } from 'unist-util-visit';
+import { visit } from 'unist-util-visit';
 import { promisify } from 'util';
+
+type Node = Parameters<Visitor>[0];
 
 const sizeOf = promisify(imageSize);
 interface ImageNode extends Node {
@@ -29,7 +32,7 @@ async function addMetadata(node: ImageNode): Promise<void> {
   const res = await sizeOf(path.join(process.cwd(), 'public', node.properties.src));
 
   if (!res) throw Error(`Invalid image with src "${node.properties.src}"`);
-  const { base64 } = await getPlaiceholder(node.properties.src, { size: 10 }); // 10 is to increase detail (default is 4)
+  const { base64 } = await getPlaiceholder(node.properties.src as unknown as Buffer, { size: 10 }); // 10 is to increase detail (default is 4)
 
   node.properties.width = res.width;
   node.properties.height = res.height;
@@ -37,10 +40,10 @@ async function addMetadata(node: ImageNode): Promise<void> {
 }
 
 export default function imageMetadata() {
-  return async function transformer(tree: Node): Promise<Node> {
+  return async function transformer(tree: Node) {
     const imgNodes: ImageNode[] = [];
 
-    visit(tree, 'element', (node: Node) => {
+    visit(tree, 'element', (node) => {
       if (isImageNode(node) && filterImageNode(node)) {
         imgNodes.push(node);
       }
