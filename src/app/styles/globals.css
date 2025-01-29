@@ -3,9 +3,7 @@ html {
 }
 
 body {
-  @apply font-default;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply font-default antialiased text-gray-700 dark:text-gray-200;
 }
 
 * {

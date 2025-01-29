@@ -1,7 +1,6 @@
 export default function formatDate(date: string, locale = 'en') {
   const now = new Date(date).toLocaleDateString(locale, {
-    year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
 
