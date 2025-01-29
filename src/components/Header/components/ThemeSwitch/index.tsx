@@ -12,7 +12,7 @@ const ThemeSwitch = () => {
     <button
       aria-label="Toggle Theme Mode"
       type="button"
-      className="rounded border-none bg-transparent p-2 text-1.25em text-gray-900 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
+      className="rounded border-none bg-transparent p-2 text-1.25em text-gray-800 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
       onClick={toggle}
     >
       {isDark ? (

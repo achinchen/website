@@ -1,4 +1,4 @@
-import { defineConfig, presetUno, presetWebFonts, presetIcons } from 'unocss';
+import { defineConfig, presetUno, presetWebFonts, presetIcons, presetTypography } from 'unocss';
 
 export default defineConfig({
   extendTheme: (theme) => {
@@ -19,6 +19,7 @@ export default defineConfig({
       },
     }),
     presetUno(),
+    presetTypography(),
     presetWebFonts({
       provider: 'none',
       fonts: {

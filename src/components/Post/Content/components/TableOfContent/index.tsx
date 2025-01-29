@@ -30,7 +30,7 @@ const TableOfContent = ({ source }: Props) => {
 
   return (
     <div className="mt-10">
-      <p className="mb-5 text-lg text-gray-900 font-semibold transition-colors dark:text-gray-100">{T.title}</p>
+      <p className="mb-5 text-lg text-gray-800 font-semibold transition-colors dark:text-gray-100">{T.title}</p>
       <div className="flex flex-col items-start justify-start">
         {headings.map(({ id, level, text }, index) => {
           return (
