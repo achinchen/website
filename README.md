@@ -1,7 +1,6 @@
 # Website
 
-# Todos
-- [kbar](https://github.com/timc1/kbar)
-- [react-wrap-balancer](https://github.com/shuding/react-wrap-balancer)
-- [content-layer](https://contentlayer.dev/)
-
+## Tech stack 
+- [Nextjs](https://github.com/vercel/next.js)
+- [Typescript](https://github.com/microsoft/TypeScript)
+- [UnoCSS](https://github.com/unocss/unocss)

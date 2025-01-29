@@ -5,10 +5,12 @@ import PostList from '~/components/Post/List';
 import { getPosts } from '~/helpers/get-posts';
 
 const T = {
-  title: 'Hey, this is Chin.',
+  title: 'Chin Chen',
   description: [
-    'I advocate for software engineering management',
-    'I believe simple things have their beauty like the laws govern the universe',
+    `Hey, I'm Chin Chen, a passionate learner and web-focused engineer.`,
+    `I read books, listen to podcasts, and actively advocate for better software engineering management.`,
+    `I believe simplicity holds its own beauty—just like the laws that govern the universe.`,
+    `Let’s keep exploring what sparks curiosity.`,
   ],
   latest: 'Latest posts',
 };
@@ -36,8 +38,8 @@ export default function Home() {
         <h1 className="text-center text-5xl sm:text-left">{T.title}</h1>
         <p className="whitespace-break-spaces text-wrap leading-loose md:leading-3em">{T.description.join('\n')} </p>
       </header>
-      <main className="my-4 transition-colors divide-y divide-gray-200 dark:divide-gray-700">
-        <h2 className="my-8 text-2xl">{T.latest}</h2>
+      <main className="my-4 transition-colors">
+        <h2 className="my-8 text-xl">{T.latest}</h2>
         <PostList posts={posts} />
       </main>
     </Fragment>
