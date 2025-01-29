@@ -1,3 +1,4 @@
+import Balancer from 'react-wrap-balancer';
 import Link from '~/components/Link';
 import formatDate from '~/helpers/format-date';
 
@@ -20,7 +21,7 @@ export default function PostList({ posts }: Props) {
         const { slug, date, title, description, path } = post;
         return (
           <li key={slug} className="group list-none transition-colors">
-            <Link href={path}>
+            <Link href={path} className="decoration-none">
               <article className="rounded-xl p-4 transition-colors xl:grid xl:grid-cols-4 xl:items-baseline space-y-2 group-hover:bg-gray-100 xl:space-y-0 dark:group-hover:bg-gray-800">
                 <dl>
                   <dt className="sr-only">Published on</dt>
@@ -29,12 +30,15 @@ export default function PostList({ posts }: Props) {
                   </dd>
                 </dl>
                 <main className="xl:col-span-3 space-y-3">
-                  <h3 className="text-lg text-gray-900 font-bold tracking-tight transition-colors md:text-2xl sm:text-xl dark:text-gray-100">
+                  <h3 className="text-lg text-gray-800 font-bold tracking-tight transition-colors md:text-2xl sm:text-xl dark:text-gray-100">
                     {title}
                   </h3>
-                  <p className="max-w-none text-gray-500 transition-colors dark:text-gray-400 md:leading-loose">
+                  <Balancer
+                    as="p"
+                    className="max-w-none text-gray-500 transition-colors dark:text-gray-400 md:leading-loose"
+                  >
                     {description}
-                  </p>
+                  </Balancer>
                 </main>
               </article>
             </Link>

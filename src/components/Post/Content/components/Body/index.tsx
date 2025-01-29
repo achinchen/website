@@ -3,9 +3,7 @@ type Props = {
 };
 
 const PostBody = ({ children }: Props) => {
-  return (
-    <div className="dark: mx-auto text-gray-900 leading-loose transition-colors dark:text-gray-100">{children}</div>
-  );
+  return <div className="prose prose-slate dark:prose-invert mx-auto transition-colors">{children}</div>;
 };
 
 export default PostBody;
