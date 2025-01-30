@@ -46,7 +46,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class">
           <Header />
           <BalancerProvider>
-            <main className="mx-auto max-w-full px-4 lg:max-w-5xl md:max-w-3xl sm:px-6">{children}</main>
+            <main className="mx-auto max-w-full px-6 lg:max-w-5xl md:max-w-3xl">{children}</main>
           </BalancerProvider>
           <Footer />
         </ThemeProvider>
