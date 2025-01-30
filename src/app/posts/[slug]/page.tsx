@@ -8,7 +8,7 @@ import getOgImageUrl from '~/helpers/get-og-image-url';
 import { getPostBySlug, getPostIndexBySlug, getPosts } from '~/helpers/get-posts';
 
 export const revalidate = 1800;
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export const generateStaticParams = async () => getPosts().map(({ slug }) => ({ slug }));
 
