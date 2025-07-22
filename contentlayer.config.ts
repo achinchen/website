@@ -20,7 +20,6 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     path: { type: 'string', resolve: (post) => `/posts/${post.slug}` },
     reading: { type: 'number', resolve: (post) => Math.ceil(readingTime(post.body.raw).minutes) },
-    // Extract language from filename (e.g., post-title.en.mdx -> en)
     language: {
       type: 'string',
       resolve: (post) => {

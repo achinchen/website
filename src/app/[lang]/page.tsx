@@ -1,29 +1,41 @@
-'use client';
-
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import { ArticleJsonLd } from 'next-seo';
 import { SITE } from '~/configs';
 import PostList from '~/components/Post/List';
 import { getPosts } from '~/helpers/get-posts';
-import { getUserLanguage, getTranslations } from '~/helpers/i18n';
-import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
-import en from '../../public/locales/en/common.json';
-import zh from '../../public/locales/zh/common.json';
+import { getTranslations } from '~/helpers/i18n';
+import { Language, DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
+import en from '../../../public/locales/en/common.json';
+import zh from '../../../public/locales/zh/common.json';
+import { notFound } from 'next/navigation';
 
 const translations: Record<Language, typeof en> = { en, zh };
 
-export default function Home() {
-  const [lang, setLang] = useState<Language>(DEFAULT_LANGUAGE);
+export const revalidate = 1800;
+export const dynamicParams = false;
 
-  useEffect(() => {
-    setLang(getUserLanguage());
-  }, []);
+// Generate static params for all supported languages
+export async function generateStaticParams() {
+  return SUPPORTED_LANGUAGES.map((lang) => ({
+    lang,
+  }));
+}
 
-  // Prevent hydration mismatch by not rendering language-dependent content until mounted
-  if (!mounted) {
-    return <div>Loading...</div>;
+type Props = {
+  params: Promise<{
+    lang: string;
+  }>;
+};
+
+export default async function LanguagePage({ params }: Props) {
+  const { lang: paramLang } = await params;
+  
+  // Validate language parameter
+  if (!SUPPORTED_LANGUAGES.includes(paramLang as Language)) {
+    return notFound();
   }
-
+  
+  const lang = paramLang as Language;
   const t = getTranslations(lang, translations);
   const posts = getPosts(lang).slice(0, 5);
 
@@ -32,7 +44,7 @@ export default function Home() {
       <ArticleJsonLd
         type="Blog"
         useAppDir
-        url={SITE.fqdn}
+        url={`${SITE.fqdn}/${lang}`}
         title={SITE.title}
         images={[SITE.bannerUrl]}
         datePublished={SITE.datePublished}
@@ -49,4 +61,4 @@ export default function Home() {
       </main>
     </Fragment>
   );
-}
+} 

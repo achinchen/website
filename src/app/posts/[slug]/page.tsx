@@ -1,45 +1,15 @@
-import type { Metadata, NextPage } from 'next';
-import { Fragment } from 'react';
-import { notFound } from 'next/navigation';
+'use client';
+
+import type { NextPage } from 'next';
+import { Fragment, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { ArticleJsonLd } from 'next-seo';
 import { SITE } from '~/configs';
 import PostContent from '~/components/Post/Content';
 import getOgImageUrl from '~/helpers/get-og-image-url';
-import { getPostBySlug, getPostIndexBySlug, getPosts } from '~/helpers/get-posts';
-
-export const revalidate = 1800;
-export const dynamicParams = false;
-
-export const generateStaticParams = async () => getPosts().map(({ slug }) => ({ slug }));
-
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
-  if (!post) return notFound();
-
-  const { description, title, date, path, image } = post;
-
-  const ogImage = getOgImageUrl(image);
-  const url = `${SITE.fqdn}${path}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-      type: 'article',
-      publishedTime: date,
-      authors: [SITE.author],
-    },
-  };
-};
+import { getPostBySlugAndLang, getPosts } from '~/helpers/get-posts';
+import { getUserLanguage } from '~/helpers/i18n';
+import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
 
 type Props = {
   params: Promise<{
@@ -47,16 +17,45 @@ type Props = {
   }>;
 };
 
-const PostPage: NextPage<Props> = async ({ params }) => {
-  const { slug } = await params;
-  const postIndex = getPostIndexBySlug(slug);
-  if (postIndex === -1) return notFound();
+const PostPage: NextPage<Props> = ({ params }) => {
+  const [slug, setSlug] = useState<string>('');
+  const [lang, setLang] = useState<Language>(DEFAULT_LANGUAGE);
+  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
-  const posts = getPosts();
-  const post = posts[postIndex];
+  useEffect(() => {
+    params.then(({ slug }) => {
+      setSlug(slug);
+    });
+  }, [params]);
 
-  const previous = postIndex ? posts[postIndex - 1] : null;
-  const next = postIndex !== posts.length - 1 ? posts[postIndex + 1] : null;
+  useEffect(() => {
+    setLang(getUserLanguage());
+    setMounted(true);
+  }, []);
+
+  // Prevent hydration mismatch by not rendering language-dependent content until mounted
+  if (!mounted || !slug) {
+    return <div>Loading...</div>;
+  }
+
+  const post = getPostBySlugAndLang(slug, lang);
+  if (!post) {
+    router.push('/404');
+    return <div>Post not found</div>;
+  }
+
+  // Get posts filtered by the current language for navigation
+  const postsInLanguage = getPosts(lang);
+  const postIndexInLanguage = postsInLanguage.findIndex(p => p.slug === slug);
+  
+  if (postIndexInLanguage === -1) {
+    router.push('/404');
+    return <div>Post not found</div>;
+  }
+
+  const previous = postIndexInLanguage > 0 ? postsInLanguage[postIndexInLanguage - 1] : null;
+  const next = postIndexInLanguage < postsInLanguage.length - 1 ? postsInLanguage[postIndexInLanguage + 1] : null;
 
   const { description, title, date, path, image } = post;
   const url = `${SITE.fqdn}${path}`;

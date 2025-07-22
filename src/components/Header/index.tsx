@@ -1,5 +1,6 @@
 import Link from '~/components/Link';
 import ThemeSwitch from './components/ThemeSwitch';
+import LanguageSwitch from './components/LanguageSwitch';
 import { SITE } from '~/configs';
 import { TITLE } from './constants';
 
@@ -14,7 +15,10 @@ export default function Header() {
         >
           {TITLE}
         </Link>
-        <ThemeSwitch />
+        <div className="flex items-center gap-4">
+          <ThemeSwitch />
+          <LanguageSwitch />
+        </div>
       </div>
     </header>
   );

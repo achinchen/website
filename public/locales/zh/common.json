@@ -8,5 +8,14 @@
   "published_at": "發佈於",
   "copied": "已複製",
   "not_found": "找不到頁面",
-  "back_to_home": "返回首頁"
+  "back_to_home": "返回首頁",
+  "homepage_title": "Chin Chen",
+  "homepage_description": [
+    "嗨，我是 Chin Chen，一位熱愛學習、專注於網頁的工程師。",
+    "我閱讀書籍、收聽播客，並積極倡導更好的軟體工程管理。",
+    "我相信簡單自有其美，就像宇宙運行的法則一樣。",
+    "讓我們持續探索那些激發好奇心的事物。"
+  ],
+  "homepage_latest": "最新文章",
+  "toggle_theme_mode": "切換主題模式"
 } 
