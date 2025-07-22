@@ -3,7 +3,7 @@
  */
 
 import { getBrowserLanguage, getUserLanguage, setUserLanguage, translate, getTranslations } from '../index';
-import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '../config';
+import { DEFAULT_LANGUAGE } from '../config';
 
 // Mock localStorage is already set up in jest.setup.js
 const mockLocalStorage = window.localStorage as jest.Mocked<Storage>;

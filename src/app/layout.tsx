@@ -3,6 +3,7 @@ import { ThemeProvider } from 'next-themes';
 import { Provider as BalancerProvider } from 'react-wrap-balancer';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
+import LanguageHtmlUpdater from '~/components/LanguageHtmlUpdater';
 import { SITE } from '~/configs';
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, Language } from '~/helpers/i18n/config';
 import './styles/index.css';
@@ -57,6 +58,7 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="x-default" href={SITE.fqdn} />
       </head>
       <body className="min-h-100vh transition-colors">
+        <LanguageHtmlUpdater />
         <ThemeProvider attribute="class">
           <Header />
           <BalancerProvider>

@@ -2,7 +2,7 @@ import { getPosts, getPostBySlug, getPostBySlugAndLang } from '../index';
 import { DEFAULT_LANGUAGE } from '../../i18n/config';
 
 describe('get-posts utilities', () => {
-  // Test constants
+
   const EXPECTED_TOTAL_POSTS = 3;
   const EXPECTED_ENGLISH_POSTS = 2;
   const EXPECTED_CHINESE_POSTS = 1;
