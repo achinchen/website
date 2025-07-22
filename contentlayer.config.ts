@@ -7,7 +7,7 @@ import imageMetadata from './script/image-metadata';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: 'posts/**/*.mdx',
+  filePathPattern: 'posts/**/*.@(en|zh).mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -15,10 +15,19 @@ export const Post = defineDocumentType(() => ({
     slug: { type: 'string', required: true },
     date: { type: 'date', required: true },
     image: { type: 'string', required: false },
+    lang: { type: 'string', required: true },
   },
   computedFields: {
     path: { type: 'string', resolve: (post) => `/posts/${post.slug}` },
     reading: { type: 'number', resolve: (post) => Math.ceil(readingTime(post.body.raw).minutes) },
+    // Extract language from filename (e.g., post-title.en.mdx -> en)
+    language: {
+      type: 'string',
+      resolve: (post) => {
+        const match = post._raw.sourceFileName.match(/\.([a-z]{2})\.mdx$/);
+        return match ? match[1] : 'en';
+      },
+    },
   },
 }));
 
