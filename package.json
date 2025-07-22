@@ -39,6 +39,7 @@
     "@types/react-dom": "^19",
     "@unocss/eslint-config": "^65.4.3",
     "@unocss/postcss": "^65.4.3",
+    "@unocss/reset": "^66.3.3",
     "eslint": "^9",
     "eslint-config-import": "^0.13.0",
     "eslint-config-next": "15.1.6",

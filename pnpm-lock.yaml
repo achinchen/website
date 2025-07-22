@@ -90,6 +90,9 @@ importers:
       '@unocss/postcss':
         specifier: ^65.4.3
         version: 65.4.3(postcss@8.5.1)
+      '@unocss/reset':
+        specifier: ^66.3.3
+        version: 66.3.3
       eslint:
         specifier: ^9
         version: 9.19.0(jiti@2.4.2)
@@ -1258,6 +1261,9 @@ packages:
 
   '@unocss/reset@65.4.3':
     resolution: {integrity: sha512-f9QnMtY1yPS1HEIkeKmSwUYcp4QS6zdo9ZcIFE9PDSLOcns3v+M1lTQg8mLChxJHVl73Cf6PofWVh5tmnxV53Q==}
+
+  '@unocss/reset@66.3.3':
+    resolution: {integrity: sha512-VIeR/mIcCL89/1uA1KM1QCYca4aeIGqEHMTJL1nCD4v+7wk6XhNXhsp5gMIHo+V804SUSmATWaeHTiKpiFu7AQ==}
 
   '@unocss/rule-utils@65.4.3':
     resolution: {integrity: sha512-bzRRdb9mb82IvgOt3KiRyUh/njRfJC3hoV84lMyUPryT8YTEP/hl6kt2KQ2l1K3WDz7ZPQXVi2eqUbqc+AUpwg==}
@@ -4670,6 +4676,8 @@ snapshots:
       '@unocss/rule-utils': 65.4.3
 
   '@unocss/reset@65.4.3': {}
+
+  '@unocss/reset@66.3.3': {}
 
   '@unocss/rule-utils@65.4.3':
     dependencies:
