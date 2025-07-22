@@ -9,14 +9,17 @@ export function getBrowserLanguage(): Language {
 }
 
 export function getUserLanguage(cookies?: string): Language {
-  // Server-side: use cookies from headers
-  if (typeof window === 'undefined') {
-    if (cookies) {
-      const langCookie = getCookieFromString('lang', cookies);
-      if (langCookie && SUPPORTED_LANGUAGES.includes(langCookie as Language)) {
-        return langCookie as Language;
-      }
+  // If cookies string is provided (server-side or testing), parse it
+  if (cookies) {
+    const langCookie = getCookieFromString('lang', cookies);
+    if (langCookie && SUPPORTED_LANGUAGES.includes(langCookie as Language)) {
+      return langCookie as Language;
     }
+    return DEFAULT_LANGUAGE;
+  }
+  
+  // Server-side without cookies parameter
+  if (typeof window === 'undefined') {
     return DEFAULT_LANGUAGE;
   }
   

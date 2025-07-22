@@ -3,7 +3,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import readingTime from 'reading-time';
-import imageMetadata from './script/image-metadata';
+import imageMetadata from './scripts/image-metadata';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
