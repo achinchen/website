@@ -1,0 +1,21 @@
+{
+  "language": "English",
+  "switch_language": "Switch Language",
+  "home": "Home",
+  "posts": "Posts",
+  "previous_post": "Previous Post",
+  "next_post": "Next Post",
+  "published_at": "Published at",
+  "copied": "Copied",
+  "not_found": "Not Found",
+  "back_to_home": "Back to Home",
+  "homepage_title": "Chin Chen",
+  "homepage_description": [
+    "Hey, I'm Chin Chen, a passionate learner and web-focused engineer.",
+    "I read books, listen to podcasts, and actively advocate for better software engineering management.",
+    "I believe simplicity holds its own beauty—just like the laws that govern the universe.",
+    "Let’s keep exploring what sparks curiosity."
+  ],
+  "homepage_latest": "Latest posts",
+  "toggle_theme_mode": "Toggle Theme Mode"
+} 

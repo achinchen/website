@@ -3,16 +3,29 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { copyToClipboard, removeDuplicateNewLine } from './utils';
+import { getUserLanguage } from '~/helpers/i18n';
+import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
+
+// Use require to avoid TypeScript linter errors for deep JSON imports
+const en = require('public/locales/en/common.json');
+const zh = require('public/locales/zh/common.json');
+
+const translations: Record<Language, typeof en> = { en, zh };
+function getTranslations(lang: Language) {
+  return translations[lang] || translations[DEFAULT_LANGUAGE];
+}
 
 type Props = React.ComponentPropsWithoutRef<'pre'>;
-
-const T = {
-  copied: 'copied',
-};
 
 function CustomPre({ children, className, ...props }: Props) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
+  let lang: Language = DEFAULT_LANGUAGE;
+  if (typeof window !== 'undefined') {
+    const userLang = getUserLanguage();
+    if (userLang) lang = userLang;
+  }
+  const t = getTranslations(lang);
 
   const onClick = async () => {
     if (preRef.current?.innerText) {
@@ -35,7 +48,7 @@ function CustomPre({ children, className, ...props }: Props) {
               'group-hover:flex': copied,
             })}
           >
-            {T.copied}
+            {t.copied}
           </span>
           <button
             type="button"

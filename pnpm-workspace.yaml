@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - contentlayer2
+  - esbuild
+  - protobufjs
+  - rehype-code-titles
+  - sharp
