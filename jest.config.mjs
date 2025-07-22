@@ -16,7 +16,7 @@ const customJestConfig = {
   // Module name mapping for path aliases
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/src/$1',
-    '^contentlayer/generated$': '<rootDir>/__mocks__/contentlayer/generated.js',
+    '^(\\.\\./){3}\\.contentlayer/generated$': '<rootDir>/tests/__mocks__/contentlayer/index.ts',
   },
   
   // Test patterns
