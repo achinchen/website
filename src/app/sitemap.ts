@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (!acc[post.slug]) {
       acc[post.slug] = {};
     }
-    acc[post.slug][post.language] = post;
+    acc[post.slug][post.lang] = post;
     return acc;
   }, {} as Record<string, Record<string, any>>);
 

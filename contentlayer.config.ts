@@ -15,12 +15,12 @@ export const Post = defineDocumentType(() => ({
     slug: { type: 'string', required: true },
     date: { type: 'date', required: true },
     image: { type: 'string', required: false },
-    lang: { type: 'string', required: true },
+    lang: { type: 'string', required: false, default: 'en' },
   },
   computedFields: {
     path: { type: 'string', resolve: (post) => `/posts/${post.slug}` },
     reading: { type: 'number', resolve: (post) => Math.ceil(readingTime(post.body.raw).minutes) },
-    language: {
+    lang: {
       type: 'string',
       resolve: (post) => {
         const match = post._raw.sourceFileName.match(/\.([a-z]{2})\.mdx$/);

@@ -20,7 +20,7 @@ describe('i18n utilities', () => {
       value: '',
     });
     
-    // Reset navigator.language
+    // Reset navigator.lang
     Object.defineProperty(navigator, 'language', {
       writable: true,
       value: 'en-US',
@@ -52,7 +52,7 @@ describe('i18n utilities', () => {
       expect(getBrowserLanguage()).toBe(DEFAULT_LANGUAGE);
     });
 
-    test('returns default language when navigator.language is unavailable', () => {
+    test('returns default language when navigator.lang is unavailable', () => {
       Object.defineProperty(navigator, 'language', {
         value: undefined,
         writable: true,

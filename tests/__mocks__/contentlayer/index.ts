@@ -19,7 +19,6 @@ export interface Post {
     };
     path: string;
     reading: number;
-    language: string;
   }
   
   const mockPosts: Post[] = [
@@ -43,7 +42,6 @@ export interface Post {
       },
       path: '/posts/test-post-1',
       reading: 1,
-      language: 'en',
     },
     {
       _id: 'test-post-1.zh.mdx',
@@ -65,7 +63,6 @@ export interface Post {
       },
       path: '/posts/test-post-1',
       reading: 1,
-      language: 'zh',
     },
     {
       _id: 'test-post-2.en.mdx',
@@ -87,7 +84,6 @@ export interface Post {
       },
       path: '/posts/test-post-2',
       reading: 1,
-      language: 'en',
     },
   ];
   
