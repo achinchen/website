@@ -1,5 +1,5 @@
 import { defineConfig, presetUno, presetWebFonts, presetIcons, presetTypography } from 'unocss';
-import icons from '@iconify-json/mdi/icons.json' assert { type: 'json' };
+import icons from '@iconify-json/mdi/icons.json' with { type: 'json' };
 
 export default defineConfig({
   extendTheme: (theme) => {
