@@ -1,0 +1,192 @@
+---
+title: "What Lies Behind a Framework Upgrade That Didn’t Go Smoothly"
+description: "How to turn frustration over a failed task into team alignment"
+slug: turn-frustration-into-team-alignment
+date: 2025-06-03
+type: Post
+image: https://images.unsplash.com/photo-1662553670836-cfb159e1d54f?q=80&w=1026&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+---
+
+
+
+Have you ever been responsible for upgrading the underlying software framework—like the application layer—for your company’s core service?
+
+If so, when do you typically start?
+
+Do you begin research as soon as the new version is announced?
+Or wait until it reaches a stable release before making a move?
+
+Most software engineers understand the importance of staying up to date with framework versions.
+It improves DX, helps avoid potential security issues—
+But let’s be honest: those reasons rarely stand on their own as a compelling business case.
+
+
+## The Gap
+
+At the time, the company’s main web service was built on Nuxt.
+When Nuxt 3 was still in beta, I wasn’t too swamped with other work, and my manager R asked if I’d be interested in exploring it.
+
+I jumped in—I genuinely enjoy research.
+I love diving into unfamiliar territory, mapping the landscape, and finding an angle that aligns with the company’s context—then using that to convince stakeholders to support the initiative.
+
+It also happened to be a great chance to test some things I had just learned from [Sr. Staff Engineer V](/en/posts/how-to-steal-from-the-most-expensive-engineer).
+
+<Spacer />
+
+After some initial research and a working PoC, the excitement faded fast.
+The upgrade would require *massive* changes.
+The risks were high.
+And with the beta still evolving, there was no clean way to scope or timebox the work.
+
+Half a month of effort turned into anxiety—I had no shippable proposal.
+
+
+## No Path Forward
+
+What would you do in this situation?
+
+Throw your hands up and tell your manager it’s a dead end?
+Keep pushing, hoping to brute-force a solution?
+
+I’ve never been the most brilliant person on the team,
+but I pride myself on patience—especially when it comes to problem-solving.
+
+So I met with R and shared everything I’d learned—even if the conclusion was:
+“This isn’t feasible right now.”
+
+But I also made it clear:
+I didn’t want this research to go to waste.
+I proposed a team meeting to realign and turn those findings into shared direction.
+
+
+## A Key Meeting
+
+Engineers hate unproductive meetings—I get it.
+
+But this one was different. It was a **decision-making session**.
+
+I define a good meeting as one that **builds alignment and produces clear next steps**.
+Since the topic cut across microservices and upgrade paths, I included suggested reading materials in the invite.
+
+I also prepared for the possibility that no one had time to read ahead—so I worked on how to summarize the essentials in 30 seconds if needed.
+
+<Spacer />
+The discussion turned out more engaging than expected.
+Probably because the outcome would shape everyone’s roadmap for the next 6 months.
+
+I rarely host meetings with more than 10 people,
+but this one taught me a lot—especially how to consolidate ideas and steer conversations in the moment.
+
+And more importantly, I realized:
+> Don’t stop at the problem—look for the opportunity behind it.
+
+Eventually, we reached consensus on a lower-risk, more realistic goal:
+Let’s first make services modular—then we’ll talk upgrades.
+
+<Spacer />
+
+I was assigned as the project owner. Great, right?
+If it were that simple, I wouldn’t be writing all this.
+
+
+## Reframing Through Business Value
+
+As engineers, we had a direction.
+But from a business standpoint, investing resources still needed a clearer value proposition.
+
+So I reframed the proposal around performance optimization—
+aligned with our Q1–Q2 business goal: **user growth**.
+
+<Spacer />
+
+I ran another PoC, this time focused on a high-traffic page,
+to test whether extracting it into a separate service would meaningfully improve performance.
+
+Along the way, I also started researching micro-frontend strategies:
+how to split products, share code, and structure projects.
+
+Unfortunately, the results weren’t promising.
+The current architecture was too tightly coupled to gain measurable performance wins without major refactors.
+
+And with our dev experience already stretched thin, this approach wasn’t practical.
+
+The final proposal?
+Put it on hold.
+
+
+## A New Perspective
+
+Did I give up on the goal?
+Definitely not. That’s not who I am. 😌
+
+I reframed the entire situation:
+If my real objective was to reduce long-term system risk,
+then maybe the issue wasn’t the upgrade—but **architectural flexibility** itself.
+
+That’s when the idea of adopting a **monorepo** workflow came to mind.
+
+<Spacer />
+Why?
+
+Because our main project involved a lot of shared logic and components.
+Splitting into multiple repos sounds great in theory, but I’d seen the pain of out-of-sync issues between UI and application repos in past jobs.
+
+At the time, the team had zero experience with micro frontends or monorepos,
+so pushing this idea too soon would be premature.
+
+The idea was shelved—for now.
+
+
+## When Ideas Get Shelved
+
+Were you in my shoes, would you feel discouraged?
+I did.
+
+That feeling of helplessness crept in:
+“I’ve done so much—and yet I can’t move anything forward.”
+
+It made me doubt both myself and the system.
+
+<Spacer />
+
+But sitting in that mindset wouldn’t help.
+I needed to find something I *could* act on.
+
+If I couldn’t push microservices yet—
+What could I do **today** to lay the groundwork for that long-term direction?
+
+I took a closer look at our technical reality,
+and decided to start with **codebase quality**.
+
+I focused on shared logic, architectural patterns, and micro frontend–friendly boundaries.
+Little by little, I proposed improvements that nudged us in the right direction.
+
+<Spacer />
+
+This mindset shift—
+from blocked frustration to architectural exploration—
+prevented my discouragement from becoming dead weight.
+
+Over the next two years, I watched those ideas take shape—
+not as dreams, but as actual projects.
+
+
+## Final Thought
+
+This experience taught me something deeply important:
+
+> There’s no such thing as an unsolvable problem.
+
+If you’re willing to face a “failed” outcome—
+if you’re willing to admit something can’t work right now—
+you also open the door to discovering what *can*.
+
+<Spacer />
+
+At the time, I was just trying to feel better about a dead-end effort.
+But that decision to convert failure into foundation was the start of my path toward becoming a Staff Engineer.
+
+It was the moment I began shaping not just code,
+but **engineering culture**.
+
+And that made all the difference.

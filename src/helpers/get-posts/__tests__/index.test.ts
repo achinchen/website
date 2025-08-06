@@ -24,11 +24,11 @@ describe('get-posts utilities', () => {
     test('returns posts filtered by language', () => {
       const englishPosts = getPosts(ENGLISH_LANGUAGE);
       expect(englishPosts).toHaveLength(EXPECTED_ENGLISH_POSTS);
-      expect(englishPosts[0].language).toBe(ENGLISH_LANGUAGE);
+      expect(englishPosts[0].lang).toBe(ENGLISH_LANGUAGE);
 
       const chinesePosts = getPosts(CHINESE_LANGUAGE);
       expect(chinesePosts).toHaveLength(EXPECTED_CHINESE_POSTS);
-      expect(chinesePosts[0].language).toBe(CHINESE_LANGUAGE);
+      expect(chinesePosts[0].lang).toBe(CHINESE_LANGUAGE);
     });
   });
 
@@ -49,14 +49,14 @@ describe('get-posts utilities', () => {
     test('returns post in requested language', () => {
       const post = getPostBySlugAndLang(TEST_SLUG_EXISTS, CHINESE_LANGUAGE);
       expect(post).toBeDefined();
-      expect(post?.language).toBe(CHINESE_LANGUAGE);
+      expect(post?.lang).toBe(CHINESE_LANGUAGE);
       expect(post?.title).toBe(TEST_CHINESE_TITLE);
     });
 
     test('falls back to English when requested language not available', () => {
       const post = getPostBySlugAndLang(TEST_SLUG_EXISTS, TEST_UNSUPPORTED_LANGUAGE);
       expect(post).toBeDefined();
-      expect(post?.language).toBe(DEFAULT_LANGUAGE);
+      expect(post?.lang).toBe(DEFAULT_LANGUAGE);
     });
 
     test('returns undefined when slug does not exist', () => {

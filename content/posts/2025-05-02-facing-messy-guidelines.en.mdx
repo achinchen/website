@@ -1,0 +1,104 @@
+---
+title: "How to Deal with a Messy Coding Guideline"
+description: "When you join a new team, you may find a messy coding guideline. What would you do?"
+slug: facing-messy-guidelines
+date: 2025-05-02
+type: Post
+image: https://images.unsplash.com/photo-1466784828399-9a9921e8bdfd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+---
+
+## What Would You Do?
+
+How does your team define *coding guidelines* or *team conventions*? Were they already in place when you joined? Or were they developed over time?
+
+If existing rules now result in high maintenance costs and are likely to create more chaos in the future, what would you do?
+
+I don’t know what your answer would be—but here’s what I did.
+
+I’ve had experience building team collaboration culture from scratch, as well as revising existing conventions. But nothing compares to this particular journey. Let me tell you why.
+
+## The First Wall After Onboarding
+
+After onboarding, engineers usually want to show their immediate impact, right?
+
+I was no different. I remember my first few deliveries went smoothly, but when it came time to align with the coding guidelines, I hit a wall. The team’s suggested writing style left me confused. I didn’t know where to draw *boundaries* or how to interpret the code clearly, since even code written around the same time followed different styles.
+
+What would you do?
+
+* A: This codebase is a mess—just write and move on.
+* B: It feels off, but let’s ship first and maybe discuss it later.
+* C: Something’s not right. I’m going to change it.
+
+At first, I felt A. Then I settled into B. Eventually, I acted on C.
+
+**The end.**
+
+Not Really.
+
+
+## The Problem Is Lack of Resolution
+
+Let me explain.
+
+At first, I didn’t fully understand the rationale behind the coding guidelines. Still, I consciously accepted the status quo—I needed to earn *credit* and show professional capability. But I also began talking to teammates to understand more.
+
+<Spacer />
+
+> Why does our codebase have different styles in the same period?
+> Is it because of business needs—or just legacy code inconsistencies?
+> Should we set aside time to refactor? Or adjust as we extend features?
+
+> What principle drives our style decisions?
+> If it’s extensibility, do we still agree that’s our top priority today?
+
+<Spacer />
+I discovered that everyone had their own thoughts. Some great discussions had happened during *review phases*, but never reached the team level. Other interesting conversations were buried in old threads without conclusions.
+
+To me, **both are equivalent to having no resolution**:
+
+The former stays between reviewer and author, others never see or agree to it.
+The latter is like watching a debate at a night market—lively but directionless.
+
+> Without a shared conclusion, code reviews won’t help us grow. They just deepen the inconsistency.
+
+## Proposal
+
+I approached **R** (my longtime engineering manager) and asked:
+Is it true that most technical discussions in our team don’t reach a conclusion?
+
+He said yes.
+
+So I told him I wanted to try proposing something—demonstrating my preferred approach to team discussions.
+
+I picked a previously archived small style issue, gathered feedback, consolidated opinions, and got consensus.
+I then defined two **action items**:
+
+- Update the coding guideline document
+- Adjust linter rules
+
+Only after completing both did I consider the proposal **fully implemented**.
+
+<Spacer />
+
+Following that success, I introduced a proposal for how we do proposals. 
+The process had four phases:
+
+- Proposal
+Background of the issue, related research. Suggested approach and sample code
+
+- Discussion
+Like an RFC, open to all team members. Agreement is marked; disagreement must be supported with reasoning. Discussion continues until consensus.
+
+- Conclusion
+Proposal owner consolidates consensus and action items. Final review allows for objections and resolution before implementation
+
+- Action
+Proposal owner executes the action items, optionally with collaborators. If extra resources are needed, the EM steps in. Only after actions are complete is the proposal considered done
+
+## This Became the New Norm
+
+Though the process may seem heavy, surprisingly, **everyone began adopting this structure in their own proposals**.
+
+It gave direction to every technical discussion and helped decisions stick.
+
+I didn’t know it at the time, but this approach—*analyzing root issues, clarifying decision-making, and resolving via structured processes would later become my defining trait as an engineer, and a key reason I grew into a Staff role.

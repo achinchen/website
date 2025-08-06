@@ -5,7 +5,7 @@
  * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
  */
 
- code[class*="language-"],
+code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
 	background: none;
@@ -88,7 +88,7 @@ pre[class*="language-"] {
 .token.operator,
 .token.entity,
 .token.url,
-.language-css .token.string,
+.lang-css .token.string,
 .style .token.string,
 .token.variable {
 	color: #81A1C1;

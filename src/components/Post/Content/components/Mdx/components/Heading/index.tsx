@@ -8,17 +8,19 @@ function Heading({ Component, id, children, ...otherProps }: Props) {
   return (
     <Component
       id={id}
-      className="group scroll-mt-24 whitespace-pre-wrap text-gray-800 dark:text-gray-100"
+      className="group scroll-mt-24 mt-20 mb-6 whitespace-pre-wrap text-gray-800 dark:text-gray-100"
       {...otherProps}
     >
       {children}
-      <a
-        href={id && `#${id}`}
-        className="ml-3 h-6 w-6 inline-flex items-center justify-center rounded-md text-lg no-underline opacity-0 shadow-sm ring-1 ring-slate-900/5 transition-all hover:bg-slate-100 dark:text-slate-400 hover:text-slate-700 group-hover:opacity-100 hover:shadow dark:ring-slate-400/20 hover:ring-slate-900/10 dark:hover:text-slate-700"
-        aria-label="Anchor"
-      >
-        #
-      </a>
+      {id && (
+        <a
+          href={`#${id}`}
+          className="ml-3 h-6 w-6 inline-flex items-center justify-center rounded-md text-lg no-underline opacity-0 shadow-sm ring-1 ring-slate-900/5 transition-all hover:bg-slate-100 dark:text-slate-400 hover:text-slate-700 group-hover:opacity-100 hover:shadow dark:ring-slate-400/20 hover:ring-slate-900/10 dark:hover:text-slate-700"
+          aria-label="Anchor"
+        >
+          #
+        </a>
+      )}
     </Component>
   );
 }

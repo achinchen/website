@@ -4,8 +4,8 @@ const bannerPath = '/og-image.png';
 
 export const SITE = {
   title: 'Chin Chen',
-  titleShort: `Chins' Blog`,
-  description: `Chin's Portfolio`,
+  titleShort: `Chin Chen's Blog`,
+  description: `What I've learned and what I'm thinking`,
   author: 'Chin Chen',
   credit: 'Chin Chen',
   email: 'greeting.to.chin@gmail.com',

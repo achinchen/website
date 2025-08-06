@@ -1,0 +1,117 @@
+---
+title: "From Monolithic to Microservices: A Turning Point"
+description: "The worst of times, the best of times, a story about an opportunity hidden in a crisis."
+slug: from-monolithic-to-microservice
+date: 2025-06-07
+type: Post
+image: https://plus.unsplash.com/premium_photo-1661297433665-870517c1cf6f?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+---
+
+ 
+Opportunities rarely come announced.
+Can you recognize one when it shows up?
+
+Honestly, I’m not always sure I can.
+But this time, I did—and it became the inflection point for introducing microservices at our company.
+
+<Spacer />
+
+It all started in the months following [this story about avoiding team burnout](/en/posts/avoid-team-burnout).
+Not long after we wrapped that project, the team experienced a significant wave of resignations, morale dropped, direction felt unclear, and watching great colleagues leave one after another, I seriously considered quitting too.
+
+But due to personal circumstances, I couldn’t leave just yet.
+Still, I didn’t want to be a warm-body paycheck thief either.
+So I started scheduling 1:1s with engineers from other teams, hoping conversations might reveal new possibilities.
+
+<Spacer />
+
+One of those chats was with K, an engineering manager and longtime collaborator.
+He mentioned that the product team wanted to rebuild our customer support system.
+But if that wasn’t possible, they’d have to shove it into an aging legacy system—a known nightmare.
+
+My gut reaction? Please, anything but that.
+
+But then another thought immediately surfaced:
+
+> Wait… isn’t this the perfect chance to push for **Monorepo-based microservices**?
+
+## A Strategic Pilot
+
+So K and I worked together on a proposal:
+Use **Monorepo architecture** to build the new support system.
+
+This wasn’t just a technical decision—it was a strategic move toward microservices.
+
+Back during the [failed upgrade project](/en/posts/turn-frustration-into-team-alignment), I had already done significant research:
+service decomposition, shared micro-frontend strategies, monorepo vs. polyrepo trade-offs.
+But theory alone means little without implementation.
+
+The company had long relied on a monolithic architecture. Unless you could prove massive ROI, new architecture proposals rarely got approved. But this support system belonged to a non-core domain—no existing service to migrate, no immediate user pressure. It was the perfect low-stakes environment to test Monorepo and service separation strategies.
+
+<Spacer />
+
+We started fresh with a new repo, using it to validate our CICD pipelines and assess whether Monorepo could deliver clearer development workflows and better scalability.
+
+This wasn’t just infrastructure—it was a testbed for everything I’d been preparing for.
+
+Of course, there was real pressure too:
+If this Monorepo rollout failed, it would be *much* harder to make the case again.
+If the support system didn’t meet expectations under the new setup, who would trust this architecture for their projects?
+
+This wasn’t just a tech risk.
+It had implications for team morale and future adoption.
+I wanted the project to deliver not just a usable system, but a proof point that **architectural transformation could improve delivery** and be worth investing in.
+
+
+## First Wins
+
+Fortunately, this story had a strong start.
+
+As **Project Owner**, I was responsible for ensuring our Monorepo setup could support real-world service development.
+K and I collaborated on breaking down the support system roadmap.
+I reviewed system designs, mapped out the microservice infrastructure we needed, and partnered with the newly formed platform team to get things built.
+
+To ensure the architecture aligned with actual product needs, I joined early product team planning sessions. That let me collect feedback and adjust the architecture accordingly.
+
+In exchange, I supported delivery planning for the support system itself—because customer success = architectural success 😄
+
+<Spacer />
+
+We did hit friction.
+
+That led to a [two-year internal knowledge-sharing initiative—60+ sessions](/en/posts/knowledge-sharing-journey), reshaping our team culture. (But that’s a story for another time.)
+
+Through this pilot, we built a team that could handle complex CICD, design internal code conventions, build architecture libraries, and deliver services.
+The successful first release of this client-facing system formally established Monorepo as our new standard—and gave the company real, visible proof of its value.
+
+More teams followed.
+
+
+## Team-Level and Personal Shift
+
+Ironically, it was the very inability to quit that forced me to find a breakthrough.
+The result? A long-standing dream—**pushing microservices**—became reality.
+
+This wasn’t just about scalability or developer experience.
+It marked a step change for our engineering team.
+One where we were finally equipped to take on more complex, evolving challenges.
+
+<Spacer />
+
+In both product design and delivery process, this experience reinforced one of my core beliefs in software engineering:
+
+> Resilience isn’t just a goal—it’s a foundation.
+
+<Spacer />
+
+
+And by treating this as a training ground, I gave teammates a chance to grow through meaningful challenges—gaining skills they’d carry with them well beyond this project.
+
+That unspoken impact was one of my proudest deliverables.
+All of this started because I didn’t want to sit around doing the bare minimum.
+
+<Spacer />
+
+After this project, I was officially promoted to **Staff Engineer**.
+Though that came with its own new question:
+> Am I *really* ready to be a Staff?

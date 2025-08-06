@@ -13,7 +13,7 @@ Object.defineProperty(window, 'localStorage', {
   value: localStorageMock
 });
 
-// Mock navigator.language
+// Mock navigator.lang
 Object.defineProperty(navigator, 'language', {
   writable: true,
   value: 'en-US',

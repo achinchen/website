@@ -20,11 +20,16 @@ type Props = React.ComponentPropsWithoutRef<'pre'>;
 function CustomPre({ children, className, ...props }: Props) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
-  let lang: Language = DEFAULT_LANGUAGE;
-  if (typeof window !== 'undefined') {
-    const userLang = getUserLanguage();
-    if (userLang) lang = userLang;
-  }
+  const [lang, setLang] = useState<Language>(DEFAULT_LANGUAGE);
+  
+  useEffect(() => {
+    // Set language only after hydration to avoid SSR mismatch
+    if (typeof window !== 'undefined') {
+      const userLang = getUserLanguage();
+      if (userLang) setLang(userLang);
+    }
+  }, []);
+  
   const t = getTranslations(lang);
 
   const onClick = async () => {

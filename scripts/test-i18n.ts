@@ -110,12 +110,12 @@ test('Language filtering works', () => {
   expect(englishPosts.length).toBeGreaterThan(0);
   
   englishPosts.forEach(post => {
-    expect(post.language).toBe('en');
+    expect(post.lang).toBe('en');
   });
   
   if (chinesePosts.length > 0) {
     chinesePosts.forEach(post => {
-      expect(post.language).toBe('zh');
+      expect(post.lang).toBe('zh');
     });
   }
 });
@@ -124,11 +124,11 @@ test('getPostBySlugAndLang works correctly', () => {
   const allPosts = getPosts();
   if (allPosts.length > 0) {
     const firstPost = allPosts[0];
-    const foundPost = getPostBySlugAndLang(firstPost.slug, firstPost.language as Language);
+    const foundPost = getPostBySlugAndLang(firstPost.slug, firstPost.lang as Language);
     
     expect(foundPost).toBeTruthy();
     expect(foundPost?.slug).toBe(firstPost.slug);
-    expect(foundPost?.language).toBe(firstPost.language);
+    expect(foundPost?.lang).toBe(firstPost.lang);
   }
 });
 
@@ -143,7 +143,7 @@ test('Fallback logic works for missing translations', () => {
     if (foundPost) {
       expect(foundPost.slug).toBe(englishPost.slug);
       // Should be either the Chinese version or English fallback
-      expect(['en', 'zh']).toContain(foundPost.language);
+      expect(['en', 'zh']).toContain(foundPost.lang);
     }
   }
 });
@@ -161,7 +161,7 @@ test('Content files follow naming convention', () => {
   
   allPosts.forEach(post => {
     // Check that language is properly extracted from filename
-    expect(['en', 'zh']).toContain(post.language);
+    expect(['en', 'zh']).toContain(post.lang);
   });
 });
 

@@ -1,4 +1,5 @@
-import type { Metadata, NextPage } from 'next';
+import type { Metadata } from 'next';
+import type { NextPage } from 'next';
 import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
 import { ArticleJsonLd } from 'next-seo';
@@ -76,8 +77,8 @@ const PostPage: NextPage<Props> = async ({ params }) => {
   // Get posts in the same language for navigation
   const posts = getPosts(lang);
   const postIndex = posts.findIndex(p => p.slug === slug);
-  const previous = postIndex > 0 ? posts[postIndex - 1] : null;
-  const next = postIndex !== -1 && postIndex < posts.length - 1 ? posts[postIndex + 1] : null;
+  const previous = postIndex !== -1 && postIndex < posts.length - 1 ? posts[postIndex + 1] : null;
+  const next = postIndex > 0 ? posts[postIndex - 1] : null; 
 
   const { description, title, date, path, image } = post;
   const url = `${SITE.fqdn}/${lang}${path}`;

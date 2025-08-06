@@ -5,6 +5,7 @@ import { useMDXComponent } from '~/hooks';
 import Link, { Props as LinkProps } from '~/components/Link';
 import Image from './components/Image';
 import Pre from './components/Pre';
+import Spacer from './components/Spacer';
 import { Post } from '~/helpers/get-posts';
 import './styles/index.css';
 
@@ -27,6 +28,7 @@ const CUSTOMIZED_COMPONENT = {
     />
   ),
   img: Image,
+  Spacer,
 };
 
 export default function MDX({ code }: Props) {
