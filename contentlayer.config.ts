@@ -1,6 +1,7 @@
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
+import remarkBreaks from 'remark-breaks';
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import readingTime from 'reading-time';
 import imageMetadata from './scripts/image-metadata';
@@ -34,6 +35,7 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post],
   mdx: {
+    remarkPlugins: [remarkBreaks],
     rehypePlugins: [rehypeSlug, rehypeCodeTitles, [rehypePrism, { ignoreMissing: true }], imageMetadata],
   },
 });

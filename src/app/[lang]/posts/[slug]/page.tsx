@@ -1,4 +1,5 @@
-import type { Metadata, NextPage } from 'next';
+import type { Metadata } from 'next';
+import type { NextPage } from 'next';
 import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
 import { ArticleJsonLd } from 'next-seo';
