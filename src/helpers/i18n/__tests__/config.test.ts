@@ -21,11 +21,11 @@ describe('i18n configuration', () => {
 
   test('English language label is correct', () => {
     expect(LANGUAGE_LABELS.en.label).toBe('English');
-    expect(LANGUAGE_LABELS.en.flag).toBe('🇬🇧');
+    expect(LANGUAGE_LABELS.en.flag).toBe('EN');
   });
 
   test('Chinese language label is correct', () => {
     expect(LANGUAGE_LABELS.zh.label).toBe('繁體中文');
-    expect(LANGUAGE_LABELS.zh.flag).toBe('🇹🇼');
+    expect(LANGUAGE_LABELS.zh.flag).toBe('中文');
   });
 }); 

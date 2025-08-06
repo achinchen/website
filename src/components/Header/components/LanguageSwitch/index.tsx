@@ -21,16 +21,12 @@ export default function LanguageSwitch() {
 
   const onSwitch = (targetLang: Language) => {
     if (targetLang !== currentLang) {
-      // Store user preference
       setUserLanguage(targetLang);
       
-      // Navigate to the same page in the target language
       const segments = pathname.split('/');
       if (SUPPORTED_LANGUAGES.includes(segments[1] as Language)) {
-        // Replace current language with target language
         segments[1] = targetLang;
       } else {
-        // Add language prefix if not present
         segments.splice(1, 0, targetLang);
       }
       
@@ -46,10 +42,10 @@ export default function LanguageSwitch() {
           key={language}
           type="button"
           aria-label={LANGUAGE_LABELS[language].label}
-          className="px-2 py-1 rounded-md border transition-colors focus:outline-none border-gray-300 bg-white dark:bg-gray-800 hover:border-blue-400"
+          className="w-11 h-8 px-1 py-1 rounded-md border transition-colors focus:outline-none border-gray-300 bg-white dark:bg-gray-800 hover:border-blue-400"
           onClick={() => onSwitch(language)}
         >
-          <span className="text-xl" role="img" aria-hidden="true">
+          <span className="text-md" role="img" aria-hidden="true">
             {LANGUAGE_LABELS[language].flag}
           </span>
         </button>

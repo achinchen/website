@@ -8,7 +8,7 @@ function Heading({ Component, id, children, ...otherProps }: Props) {
   return (
     <Component
       id={id}
-      className="group scroll-mt-24 whitespace-pre-wrap text-gray-800 dark:text-gray-100"
+      className="group scroll-mt-24 mt-20 mb-6 whitespace-pre-wrap text-gray-800 dark:text-gray-100"
       {...otherProps}
     >
       {children}
