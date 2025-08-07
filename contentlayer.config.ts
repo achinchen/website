@@ -6,6 +6,29 @@ import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import readingTime from 'reading-time';
 import imageMetadata from './scripts/image-metadata';
 
+export const Series = defineDocumentType(() => ({
+  name: 'Series',
+  filePathPattern: 'series/**/*.@(en|zh).mdx',
+  contentType: 'mdx',
+  fields: {
+    name: { type: 'string', required: true },
+    slug: { type: 'string', required: true },
+    description: { type: 'string', required: true },
+    status: { type: 'enum', options: ['ongoing', 'completed'], required: true },
+    lang: { type: 'string', required: false, default: 'en' },
+  },
+  computedFields: {
+    path: { type: 'string', resolve: (series) => `/series/${series.slug}` },
+    lang: {
+      type: 'string',
+      resolve: (series) => {
+        const match = series._raw.sourceFileName.match(/\.([a-z]{2})\.mdx$/);
+        return match ? match[1] : 'en';
+      },
+    },
+  },
+}));
+
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: 'posts/**/*.@(en|zh).mdx',
@@ -17,6 +40,10 @@ export const Post = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     image: { type: 'string', required: false },
     lang: { type: 'string', required: false, default: 'en' },
+    series: { type: 'string', required: false },
+    seriesSlug: { type: 'string', required: false },
+    seriesOrder: { type: 'number', required: false },
+    tags: { type: 'list', of: { type: 'string' }, required: false, default: [] },
   },
   computedFields: {
     path: { type: 'string', resolve: (post) => `/posts/${post.slug}` },
@@ -33,7 +60,7 @@ export const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'content',
-  documentTypes: [Post],
+  documentTypes: [Post, Series],
   mdx: {
     remarkPlugins: [remarkBreaks],
     rehypePlugins: [rehypeSlug, rehypeCodeTitles, [rehypePrism, { ignoreMissing: true }], imageMetadata],

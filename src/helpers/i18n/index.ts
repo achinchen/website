@@ -74,3 +74,11 @@ export function getTranslations(lang: Language, translations: Record<Language, R
   const fallback = translations[DEFAULT_LANGUAGE] || {};
   return { ...fallback, ...requested };
 } 
+
+
+export function getPostCountText(count: number, singular: string, plural: string): string {
+  if (count === 1) {
+    return singular;
+  }
+  return plural.replace('{{count}}', String(count));
+}

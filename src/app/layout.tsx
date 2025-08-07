@@ -57,7 +57,7 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="zh" href={`${SITE.fqdn}/zh`} />
         <link rel="alternate" hrefLang="x-default" href={SITE.fqdn} />
       </head>
-      <body className="min-h-100vh transition-colors">
+      <body className="min-h-100vh transition-color flex flex-col">
         <LanguageHtmlUpdater />
         <ThemeProvider attribute="class">
           <Header />

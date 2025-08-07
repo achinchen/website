@@ -4,7 +4,7 @@ import { SITE } from '~/configs';
 import PostList from '~/components/Post/List';
 import { getPosts } from '~/helpers/get-posts';
 import { getTranslations } from '~/helpers/i18n';
-import { Language, DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
+import { Language, SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
 import en from '../../../public/locales/en/common.json';
 import zh from '../../../public/locales/zh/common.json';
 import { notFound } from 'next/navigation';

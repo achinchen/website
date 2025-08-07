@@ -13,7 +13,7 @@ type Props = {
   code: Post['body']['code'];
 };
 
-const CUSTOMIZED_COMPONENT = {
+const MDXComponents = {
   h1: H1,
   h2: H2,
   h3: H3,
@@ -33,5 +33,5 @@ const CUSTOMIZED_COMPONENT = {
 
 export default function MDX({ code }: Props) {
   const MdxComponent = useMDXComponent(code);
-  return <MdxComponent components={CUSTOMIZED_COMPONENT} />;
+  return <MdxComponent components={MDXComponents} />;
 }

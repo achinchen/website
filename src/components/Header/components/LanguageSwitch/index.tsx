@@ -42,7 +42,7 @@ export default function LanguageSwitch() {
           key={language}
           type="button"
           aria-label={LANGUAGE_LABELS[language].label}
-          className="w-11 h-8 px-1 py-1 rounded-md border transition-colors focus:outline-none border-gray-300 bg-white dark:bg-gray-800 hover:border-blue-400"
+          className="rounded-md p-2 text-sm text-gray-800 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800 border-none bg-transparent"
           onClick={() => onSwitch(language)}
         >
           <span className="text-md" role="img" aria-hidden="true">
@@ -52,4 +52,4 @@ export default function LanguageSwitch() {
       ))}
     </nav>
   );
-} 
+}

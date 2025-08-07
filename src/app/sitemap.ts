@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { SITE } from '~/configs';
 import { getPosts } from '~/helpers/get-posts';
+import { getAllSeries } from '~/helpers/get-series';
+import { getAllTags } from '~/helpers/get-tags';
 import { SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -20,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Add language-specific home pages
   SUPPORTED_LANGUAGES.forEach(lang => {
+    // Home page
     sitemapEntries.push({
       url: `${SITE.fqdn}/${lang}`,
       lastModified: new Date(),
@@ -27,6 +30,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         languages: {
           en: `${SITE.fqdn}/en`,
           zh: `${SITE.fqdn}/zh`,
+        },
+      },
+    });
+
+    // Series listing page
+    sitemapEntries.push({
+      url: `${SITE.fqdn}/${lang}/series`,
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          en: `${SITE.fqdn}/en/series`,
+          zh: `${SITE.fqdn}/zh/series`,
+        },
+      },
+    });
+
+    // Tags listing page
+    sitemapEntries.push({
+      url: `${SITE.fqdn}/${lang}/tags`,
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          en: `${SITE.fqdn}/en/tags`,
+          zh: `${SITE.fqdn}/zh/tags`,
         },
       },
     });
@@ -64,6 +91,62 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified,
       alternates: {
         languages,
+      },
+    });
+  });
+
+  // Add series pages
+  const seriesBySlug = new Map<string, { en?: string; zh?: string; lastModified: Date }>();
+  
+  SUPPORTED_LANGUAGES.forEach(lang => {
+    const series = getAllSeries(lang);
+    series.forEach(s => {
+      const entry = seriesBySlug.get(s.slug) || { lastModified: new Date(0) };
+      entry[lang] = s.name;
+      entry.lastModified = new Date(Math.max(
+        entry.lastModified.getTime(),
+        ...s.posts.map(p => new Date(p.date).getTime())
+      ));
+      seriesBySlug.set(s.slug, entry);
+    });
+  });
+
+  seriesBySlug.forEach((info, slug) => {
+    sitemapEntries.push({
+      url: `${SITE.fqdn}/posts/series/${slug}`,
+      lastModified: info.lastModified,
+      alternates: {
+        languages: {
+          en: `${SITE.fqdn}/en/posts/series/${slug}`,
+          zh: `${SITE.fqdn}/zh/posts/series/${slug}`,
+        },
+      },
+    });
+  });
+
+  // Add tag pages
+  const tagsBySlug = new Map<string, { en?: string; zh?: string; lastModified: Date }>();
+  
+  SUPPORTED_LANGUAGES.forEach(lang => {
+    const tags = getAllTags(lang);
+    tags.forEach(tag => {
+      const entry = tagsBySlug.get(tag.slug) || { lastModified: new Date(0) };
+      entry[lang] = tag.name;
+      // Use current date for tags as they're dynamically generated
+      entry.lastModified = new Date();
+      tagsBySlug.set(tag.slug, entry);
+    });
+  });
+
+  tagsBySlug.forEach((info, slug) => {
+    sitemapEntries.push({
+      url: `${SITE.fqdn}/posts/tags/${slug}`,
+      lastModified: info.lastModified,
+      alternates: {
+        languages: {
+          en: `${SITE.fqdn}/en/posts/tags/${slug}`,
+          zh: `${SITE.fqdn}/zh/posts/tags/${slug}`,
+        },
       },
     });
   });
