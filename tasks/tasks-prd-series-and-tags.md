@@ -1,6 +1,6 @@
 # Task List: Series and Tags Implementation
 
-*Generated from PRD: prd-series-and-tags.md*
+_Generated from PRD: prd-series-and-tags.md_
 
 ## Relevant Files
 
@@ -8,7 +8,7 @@
 - `src/helpers/get-posts/index.ts` - Extend post fetching logic for series and tags
 - `src/helpers/get-posts/index.test.ts` - Unit tests for enhanced post fetching
 - `src/app/[lang]/posts/series/[slug]/page.tsx` - Series detail page component
-- `src/app/[lang]/posts/tags/[slug]/page.tsx` - Tag detail page component  
+- `src/app/[lang]/posts/tags/[slug]/page.tsx` - Tag detail page component
 - `src/app/[lang]/series/page.tsx` - Series listing page component
 - `src/app/[lang]/tags/page.tsx` - Tags listing page component
 - `src/components/Post/Content/components/SeriesInfo/index.tsx` - Series metadata display component
@@ -39,7 +39,7 @@
   - [x] 1.4 Test schema changes by adding sample frontmatter to existing posts
   - [x] 1.5 Update TypeScript types for posts to include new fields
 
-- [x] 2.0 Implement Series Functionality  
+- [x] 2.0 Implement Series Functionality
   - [x] 2.1 Create `src/helpers/get-series/index.ts` with functions to get all series, get series by slug, get posts in series
   - [x] 2.2 Implement series ordering logic (by seriesOrder field, fallback to published date)
   - [x] 2.3 Create `src/app/[lang]/posts/series/[slug]/page.tsx` for individual series pages
@@ -74,4 +74,4 @@
   - [x] 5.4 Add proper meta tags and structured data for series/tag pages
   - [x] 5.5 Ensure cross-language series synchronization (same publication dates)
   - [x] 5.6 Test feed output includes proper series/tag representation
-  - [x] 5.7 Verify SEO meta tags are correctly generated for all new page types 
+  - [x] 5.7 Verify SEO meta tags are correctly generated for all new page types

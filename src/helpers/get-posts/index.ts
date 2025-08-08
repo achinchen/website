@@ -4,12 +4,15 @@ import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
 
 const getNumericDate = (date: string) => Number(date.substring(0, 10).replace(/-/g, ''));
 
-const POST_LIST: ContentLayerPost[] = allPosts.sort((a: ContentLayerPost, b: ContentLayerPost) => (getNumericDate(a.date) > getNumericDate(b.date) ? -1 : 1));
+const POST_LIST: ContentLayerPost[] = allPosts.sort((a: ContentLayerPost, b: ContentLayerPost) =>
+  getNumericDate(a.date) > getNumericDate(b.date) ? -1 : 1,
+);
 
 export const getPosts = (lang: Language = DEFAULT_LANGUAGE): ContentLayerPost[] =>
-  POST_LIST.filter((post: ContentLayerPost) => post.lang === lang)
+  POST_LIST.filter((post: ContentLayerPost) => post.lang === lang);
 
-export const getPostBySlug = (slug: string): ContentLayerPost | undefined => POST_LIST.find((post: ContentLayerPost) => post.slug === slug);
+export const getPostBySlug = (slug: string): ContentLayerPost | undefined =>
+  POST_LIST.find((post: ContentLayerPost) => post.slug === slug);
 
 export const getPostBySlugAndLang = (slug: string, lang: Language): ContentLayerPost | undefined => {
   // Try to find the post in the requested language
@@ -20,5 +23,3 @@ export const getPostBySlugAndLang = (slug: string, lang: Language): ContentLayer
   }
   return post;
 };
-
-

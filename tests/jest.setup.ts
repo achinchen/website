@@ -1,5 +1,5 @@
 // Jest setup file
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 // Mock localStorage
 const localStorageMock = {
@@ -9,29 +9,31 @@ const localStorageMock = {
   clear: jest.fn(),
 };
 
-Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock
+Object.defineProperty(window, "localStorage", {
+  value: localStorageMock,
 });
 
 // Mock navigator.lang
-Object.defineProperty(navigator, 'language', {
+Object.defineProperty(navigator, "language", {
   writable: true,
-  value: 'en-US',
+  value: "en-US",
 });
 
 // Mock IntersectionObserver
-(global as any).IntersectionObserver = jest.fn().mockImplementation((callback: IntersectionObserverCallback) => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-  root: null,
-  rootMargin: '0px',
-  thresholds: [0],
-  takeRecords: jest.fn().mockReturnValue([]),
-}));
+(global as any).IntersectionObserver = jest
+  .fn()
+  .mockImplementation((callback: IntersectionObserverCallback) => ({
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+    disconnect: jest.fn(),
+    root: null,
+    rootMargin: "0px",
+    thresholds: [0],
+    takeRecords: jest.fn().mockReturnValue([]),
+  }));
 
 // Mock Next.js router
-jest.mock('next/navigation', () => ({
+jest.mock("next/navigation", () => ({
   useRouter: () => ({
     push: jest.fn(),
     replace: jest.fn(),
@@ -40,12 +42,12 @@ jest.mock('next/navigation', () => ({
     refresh: jest.fn(),
     prefetch: jest.fn(),
   }),
-  usePathname: () => '/en',
+  usePathname: () => "/en",
   useSearchParams: () => new URLSearchParams(),
 }));
 
 // Mock window.matchMedia
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: jest.fn().mockImplementation((query: string) => ({
     matches: false,
@@ -64,8 +66,8 @@ const originalWarn = console.warn;
 beforeAll(() => {
   console.warn = (...args: any[]) => {
     if (
-      typeof args[0] === 'string' &&
-      args[0].includes('Warning: ReactDOM.render is deprecated')
+      typeof args[0] === "string" &&
+      args[0].includes("Warning: ReactDOM.render is deprecated")
     ) {
       return;
     }
@@ -76,5 +78,3 @@ beforeAll(() => {
 afterAll(() => {
   console.warn = originalWarn;
 });
-
- 

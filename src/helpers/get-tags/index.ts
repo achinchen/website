@@ -20,7 +20,7 @@ export function getAllTags(lang: string = 'en'): TagInfo[] {
       post.tags?.forEach((tag) => {
         const normalizedTag = tag.toLowerCase();
         const existingTag = tagMap.get(normalizedTag);
-        
+
         if (existingTag) {
           existingTag.count += 1;
         } else {
@@ -33,8 +33,7 @@ export function getAllTags(lang: string = 'en'): TagInfo[] {
       });
     });
 
-  return Array.from(tagMap.values())
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  return Array.from(tagMap.values()).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 }
 
 /**
@@ -45,13 +44,9 @@ export function getAllTags(lang: string = 'en'): TagInfo[] {
  */
 export function getPostsByTag(tag: string, lang: string = 'en'): Post[] {
   const normalizedTag = tag.toLowerCase();
-  
+
   return allPosts
-    .filter(
-      (post) => 
-        post.lang === lang && 
-        post.tags?.some((t) => t.toLowerCase() === normalizedTag)
-    )
+    .filter((post) => post.lang === lang && post.tags?.some((t) => t.toLowerCase() === normalizedTag))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
@@ -64,10 +59,10 @@ export function getPostsByTag(tag: string, lang: string = 'en'): Post[] {
  */
 export function getTagSize(count: number, maxCount: number, minCount: number): string {
   if (maxCount === minCount) return 'text-lg';
-  
+
   const sizes = ['text-sm', 'text-base', 'text-lg', 'text-xl', 'text-2xl'];
   const sizeRange = maxCount - minCount;
   const index = Math.floor(((count - minCount) / sizeRange) * (sizes.length - 1));
-  
+
   return sizes[index];
 }

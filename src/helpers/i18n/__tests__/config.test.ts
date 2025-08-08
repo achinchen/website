@@ -12,7 +12,7 @@ describe('i18n configuration', () => {
   });
 
   test('LANGUAGE_LABELS has entries for all supported languages', () => {
-    SUPPORTED_LANGUAGES.forEach(lang => {
+    SUPPORTED_LANGUAGES.forEach((lang) => {
       expect(LANGUAGE_LABELS).toHaveProperty(lang);
       expect(LANGUAGE_LABELS[lang]).toHaveProperty('label');
       expect(LANGUAGE_LABELS[lang]).toHaveProperty('flag');
@@ -28,4 +28,4 @@ describe('i18n configuration', () => {
     expect(LANGUAGE_LABELS.zh.label).toBe('繁體中文');
     expect(LANGUAGE_LABELS.zh.flag).toBe('中文');
   });
-}); 
+});

@@ -3,34 +3,16 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { copyToClipboard, removeDuplicateNewLine } from './utils';
-import { getUserLanguage } from '~/helpers/i18n';
-import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
-
-// Use require to avoid TypeScript linter errors for deep JSON imports
-const en = require('public/locales/en/common.json');
-const zh = require('public/locales/zh/common.json');
-
-const translations: Record<Language, typeof en> = { en, zh };
-function getTranslations(lang: Language) {
-  return translations[lang] || translations[DEFAULT_LANGUAGE];
-}
+import { useUserTranslations } from '~/helpers/i18n/translations';
 
 type Props = React.ComponentPropsWithoutRef<'pre'>;
 
 function CustomPre({ children, className, ...props }: Props) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
-  const [lang, setLang] = useState<Language>(DEFAULT_LANGUAGE);
-  
-  useEffect(() => {
-    // Set language only after hydration to avoid SSR mismatch
-    if (typeof window !== 'undefined') {
-      const userLang = getUserLanguage();
-      if (userLang) setLang(userLang);
-    }
-  }, []);
-  
-  const t = getTranslations(lang);
+
+  // Get translations - will use default language during SSR, user language after hydration
+  const { t } = useUserTranslations();
 
   const onClick = async () => {
     if (preRef.current?.innerText) {

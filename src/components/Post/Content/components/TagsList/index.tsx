@@ -14,7 +14,7 @@ export default function TagsList({ post }: TagsListProps) {
         <Link
           key={`${tag}-${post.lang}`}
           href={`/${post.lang}/posts/tags/${tag.toLowerCase()}`}
-          className="text-sm text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 decoration-none px-2 py-1 rounded transition-colors"
+          className="rounded px-2 py-1 text-sm text-gray-800 decoration-none transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
         >
           #{tag}
         </Link>

@@ -1,14 +1,8 @@
 import Link from 'next/link';
 import { TagInfo, getTagSize } from '~/helpers/get-tags';
-import { translate } from '~/helpers/i18n';
-import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
+import { Language } from '~/helpers/i18n/config';
 import { getPostCountText } from '~/helpers/i18n';
-import type { Translations } from '../../../../src/helpers/i18n/types';
-
-const translations = {
-  en: require('../../../../public/locales/en/common.json'),
-  zh: require('../../../../public/locales/zh/common.json'),
-} as Record<Language, Translations>;
+import { createTranslator } from '~/helpers/i18n/translations';
 
 interface TagsListProps {
   tags: TagInfo[];
@@ -23,7 +17,7 @@ interface TagItemProps {
 }
 
 function TagItem({ tag, lang, maxCount, minCount }: TagItemProps) {
-  const t = (key: string) => translate(key, lang || DEFAULT_LANGUAGE, translations);
+  const t = createTranslator(lang);
 
   return (
     <Link
@@ -39,29 +33,19 @@ function TagItem({ tag, lang, maxCount, minCount }: TagItemProps) {
 }
 
 export default function TagsList({ tags, lang }: TagsListProps) {
-  const t = (key: string) => translate(key, lang || DEFAULT_LANGUAGE, translations);
+  const t = createTranslator(lang);
 
   if (tags.length === 0) {
-    return (
-      <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-        {t('no_tags_available')}
-      </div>
-    );
+    return <div className="py-12 text-center text-gray-500 dark:text-gray-400">{t('no_tags_available')}</div>;
   }
 
   const maxCount = Math.max(...tags.map((tag) => tag.count));
   const minCount = Math.min(...tags.map((tag) => tag.count));
 
   return (
-    <div className="flex flex-wrap gap-4 justify-center">
+    <div className="flex flex-wrap justify-center gap-4">
       {tags.map((tag) => (
-        <TagItem
-          key={`${tag.slug}-${lang}`}
-          tag={tag}
-          lang={lang}
-          maxCount={maxCount}
-          minCount={minCount}
-        />
+        <TagItem key={`${tag.slug}-${lang}`} tag={tag} lang={lang} maxCount={maxCount} minCount={minCount} />
       ))}
     </div>
   );

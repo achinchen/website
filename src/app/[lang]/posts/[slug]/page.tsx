@@ -15,25 +15,25 @@ export const dynamicParams = false;
 export const generateStaticParams = async () => {
   const posts = getPosts();
   const params: { lang: string; slug: string }[] = [];
-  
+
   // Generate params for all language/slug combinations
-  posts.forEach(post => {
-    SUPPORTED_LANGUAGES.forEach(lang => {
+  posts.forEach((post) => {
+    SUPPORTED_LANGUAGES.forEach((lang) => {
       params.push({ lang, slug: post.slug });
     });
   });
-  
+
   return params;
 };
 
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const { slug, lang: paramLang } = await params;
-  const lang = SUPPORTED_LANGUAGES.includes(paramLang as Language) ? paramLang as Language : DEFAULT_LANGUAGE;
+  const lang = SUPPORTED_LANGUAGES.includes(paramLang as Language) ? (paramLang as Language) : DEFAULT_LANGUAGE;
   const post = getPostBySlugAndLang(slug, lang);
   if (!post) return notFound();
 
   const { description, title, date, path, image } = post;
-  const ogImage = getOgImageUrl(image);
+  const ogImage = getOgImageUrl(title, image);
   const url = `${SITE.fqdn}/${lang}${path}`;
 
   return {
@@ -64,25 +64,25 @@ type Props = {
 
 const PostPage: NextPage<Props> = async ({ params }) => {
   const { slug, lang: paramLang } = await params;
-  
+
   // Validate language parameter
   if (!SUPPORTED_LANGUAGES.includes(paramLang as Language)) {
     return notFound();
   }
-  
+
   const lang = paramLang as Language;
   const post = getPostBySlugAndLang(slug, lang);
   if (!post) return notFound();
 
   // Get posts in the same language for navigation
   const posts = getPosts(lang);
-  const postIndex = posts.findIndex(p => p.slug === slug);
+  const postIndex = posts.findIndex((p) => p.slug === slug);
   const previous = postIndex !== -1 && postIndex < posts.length - 1 ? posts[postIndex + 1] : null;
-  const next = postIndex > 0 ? posts[postIndex - 1] : null; 
+  const next = postIndex > 0 ? posts[postIndex - 1] : null;
 
   const { description, title, date, path, image } = post;
   const url = `${SITE.fqdn}/${lang}${path}`;
-  const ogImage = getOgImageUrl(image);
+  const ogImage = getOgImageUrl(title, image);
 
   return (
     <Fragment>
@@ -101,4 +101,4 @@ const PostPage: NextPage<Props> = async ({ params }) => {
   );
 };
 
-export default PostPage; 
+export default PostPage;

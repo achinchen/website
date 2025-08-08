@@ -1,5 +1,4 @@
 export type RelatedPost = {
-    title: string;
-    path: string;
-  } | null;
-  
+  title: string;
+  path: string;
+} | null;

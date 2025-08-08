@@ -10,12 +10,7 @@
   "not_found": "Not Found",
   "back_to_home": "Back to Home",
   "homepage_title": "Chin Chen",
-  "homepage_description": [
-    "Hey, I'm Chin Chen, a passionate learner and web-focused engineer.",
-    "I read books, listen to podcasts, and actively advocate for better software engineering management.",
-    "I believe simplicity holds its own beauty—just like the laws that govern the universe.",
-    "Let’s keep exploring what sparks curiosity."
-  ],
+  "homepage_description": "Hey, I'm Chin Chen,\na passionate learner and web-focused engineer. \nI read books, listen to podcasts, and actively advocate for better software engineering management.\nI believe simplicity holds its own beauty—just like the laws that govern the universe. Let’s keep exploring what sparks curiosity.",
   "homepage_latest": "Latest posts",
   "toggle_theme_mode": "Toggle Theme Mode",
   "series": "Series",
@@ -41,4 +36,4 @@
   "meta_tags_list_description": "Browse all article tags",
   "meta_tag_title": "Posts tagged with \"{{tag}}\"",
   "meta_tag_description": "Browse all posts tagged with \"{{tag}}\""
-} 
+}

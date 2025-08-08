@@ -10,12 +10,7 @@
   "not_found": "找不到頁面",
   "back_to_home": "返回首頁",
   "homepage_title": "Chin Chen",
-  "homepage_description": [
-    "嗨，我是 Chin Chen，一位熱愛學習、專注於 web 的軟體工程師。",
-    "我閱讀書籍、收聽 Podcast，目前在學習如何積極倡導更好的軟體工程管理。",
-    "我相信簡單是真理，就像宇宙運行的法則一樣。",
-    "持續探索那些激發好奇心的事物。"
-  ],
+  "homepage_description": "嗨，我是 Chin Chen，\n一位熱愛學習、專注於 web 的軟體工程師。我閱讀書籍、收聽 Podcast，目前在學習如何積極倡導更好的軟體工程管理。我相信簡單是真理，就像宇宙運行的法則一樣。持續探索那些激發好奇心的事物。",
   "homepage_latest": "最新文章",
   "toggle_theme_mode": "切換主題模式",
   "series": "系列",
@@ -38,5 +33,7 @@
   "meta_tags_title": "標籤",
   "meta_tags_list_description": "瀏覽所有文章標籤",
   "meta_tag_title": "標籤為「{{tag}}」的文章",
-  "meta_tag_description": "瀏覽所有標籤為「{{tag}}」的文章"
-} 
+  "meta_tag_description": "瀏覽所有標籤為「{{tag}}」的文章",
+  "series_list": "瀏覽所有系列",
+  "meta_series_list_title": "系列"
+}

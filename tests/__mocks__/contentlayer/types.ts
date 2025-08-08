@@ -9,7 +9,7 @@ export interface DocumentBase {
     sourceFilePath: string;
     sourceFileName: string;
     sourceFileDir: string;
-    contentType: 'mdx';
+    contentType: "mdx";
     flattenedPath: string;
   };
   type: string;
@@ -17,17 +17,17 @@ export interface DocumentBase {
 }
 
 export interface Series extends DocumentBase {
-  type: 'Series';
+  type: "Series";
   name: string;
   slug: string;
   description: string;
-  status: 'ongoing' | 'completed';
+  status: "ongoing" | "completed";
   lang: string;
   path: string;
 }
 
 export interface Post extends DocumentBase {
-  type: 'Post';
+  type: "Post";
   title: string;
   description: string;
   slug: string;

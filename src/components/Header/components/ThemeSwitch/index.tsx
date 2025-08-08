@@ -1,26 +1,12 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { getUserLanguage } from '~/helpers/i18n';
-import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
-const en = require('public/locales/en/common.json');
-const zh = require('public/locales/zh/common.json');
-
-const translations: Record<Language, typeof en> = { en, zh };
-function getTranslations(lang: Language) {
-  return translations[lang] || translations[DEFAULT_LANGUAGE];
-}
+import { getUserTranslations } from '~/helpers/i18n/translations';
 
 const ThemeSwitch = () => {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const isDark = theme === 'dark' || resolvedTheme === 'dark';
-
-  let lang: Language = DEFAULT_LANGUAGE;
-  if (typeof window !== 'undefined') {
-    const userLang = getUserLanguage();
-    if (userLang) lang = userLang;
-  }
-  const t = getTranslations(lang);
+  const t = getUserTranslations();
 
   const toggle = () => setTheme(isDark ? 'light' : 'dark');
 

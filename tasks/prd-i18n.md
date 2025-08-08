@@ -62,4 +62,4 @@ This feature introduces internationalization (i18n) to the website, enabling sup
 ## Open Questions
 
 - Should the URL structure include the language code (e.g., `/en/posts/...`, `/zh/posts/...`) or remain flat with language detection?
-- Are there any analytics requirements for tracking language preference or usage? 
+- Are there any analytics requirements for tracking language preference or usage?
