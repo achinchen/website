@@ -45,6 +45,7 @@ export const Post = defineDocumentType(() => ({
     tags: { type: 'list', of: { type: 'string' }, required: false, default: [] },
   },
   computedFields: {
+    type: { type: 'string', resolve: () => 'Post' },
     path: { type: 'string', resolve: (post) => `/posts/${post.slug}` },
     reading: { type: 'number', resolve: (post) => Math.ceil(readingTime(post.body.raw).minutes) },
     lang: {
