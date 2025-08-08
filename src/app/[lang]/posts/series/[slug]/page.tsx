@@ -4,12 +4,9 @@ import PostList from '~/components/Post/List';
 import { getTitle } from '~/helpers/get-title';
 import { Metadata } from 'next';
 import { allSeries } from 'contentlayer/generated';
-import { translate, getPostCountText } from '~/helpers/i18n';
+import { getPostCountText } from '~/helpers/i18n';
 import { Language, SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
-import en from '../../../../../../public/locales/en/common.json';
-import zh from '../../../../../../public/locales/zh/common.json';
-
-const translations: Record<Language, typeof en> = { en, zh };
+import { createTranslator } from '~/helpers/i18n/translations';
 
 interface SeriesPageProps {
   params: Promise<{
@@ -26,7 +23,7 @@ export async function generateMetadata({ params }: SeriesPageProps): Promise<Met
     return {};
   }
 
-  const t = (key: string) => translate(key, lang as Language, translations);
+  const t = createTranslator(lang as Language);
   const title = getTitle(t('meta_series_title').replace('{{name}}', series.name));
   
   return {
@@ -61,7 +58,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
 
   const lang = paramLang as Language;
   const series = getSeriesBySlug(slug, lang);
-  const t = (key: string) => translate(key, lang, translations);
+  const t = createTranslator(lang);
 
   if (!series) {
     notFound();

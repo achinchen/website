@@ -1,12 +1,8 @@
 import Link from 'next/link';
 import { Post } from 'contentlayer/generated';
 import { getSeriesBySlug, getSeriesNavigation } from '~/helpers/get-series';
-import { translate } from '~/helpers/i18n';
+import { createTranslator } from '~/helpers/i18n/translations';
 import { Language } from '~/helpers/i18n/config';
-import en from '../../../../../../public/locales/en/common.json';
-import zh from '../../../../../../public/locales/zh/common.json';
-
-const translations: Record<Language, typeof en> = { en, zh };
 
 interface SeriesNavigationProps {
   post: Post;
@@ -18,7 +14,7 @@ export default function SeriesNavigation({ post }: SeriesNavigationProps) {
   const series = getSeriesBySlug(post.seriesSlug, post.lang);
   if (!series) return null;
 
-  const t = (key: string) => translate(key, post.lang as Language, translations);
+  const t = createTranslator(post.lang as Language);
   const { nextPost, prevPost } = getSeriesNavigation(post);
   const currentIndex = series.posts.findIndex(p => p.slug === post.slug);
   const totalPosts = series.posts.length;

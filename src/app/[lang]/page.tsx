@@ -3,13 +3,9 @@ import { ArticleJsonLd } from 'next-seo';
 import { SITE } from '~/configs';
 import PostList from '~/components/Post/List';
 import { getPosts } from '~/helpers/get-posts';
-import { getTranslations } from '~/helpers/i18n';
 import { Language, SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
-import en from '../../../public/locales/en/common.json';
-import zh from '../../../public/locales/zh/common.json';
 import { notFound } from 'next/navigation';
-
-const translations: Record<Language, typeof en> = { en, zh };
+import { getTranslations } from '~/helpers/i18n/translations';
 
 export const revalidate = 1800;
 export const dynamicParams = false;
@@ -36,7 +32,7 @@ export default async function LanguagePage({ params }: Props) {
   }
   
   const lang = paramLang as Language;
-  const t = getTranslations(lang, translations);
+  const t = getTranslations(lang);
   const posts = getPosts(lang).slice(0, 5);
 
   return (

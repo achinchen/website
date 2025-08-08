@@ -2,14 +2,11 @@ import { notFound } from 'next/navigation';
 import PostList from '~/components/Post/List';
 import { getTitle } from '~/helpers/get-title';
 import { Metadata } from 'next';
-import { translate, getPostCountText } from '~/helpers/i18n';
+import { getPostCountText } from '~/helpers/i18n';
 import { Language, SUPPORTED_LANGUAGES } from '~/helpers/i18n/config';
 import { getPostsByTag } from '~/helpers/get-tags';
 import { allPosts } from 'contentlayer/generated';
-import en from '../../../../../../public/locales/en/common.json';
-import zh from '../../../../../../public/locales/zh/common.json';
-
-const translations: Record<Language, typeof en> = { en, zh };
+import { createTranslator } from '~/helpers/i18n/translations';
 
 interface TagPageProps {
   params: Promise<{
@@ -26,7 +23,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
     return {};
   }
 
-  const t = (key: string) => translate(key, lang as Language, translations);
+  const t = createTranslator(lang as Language);
   const title = getTitle(t('meta_tag_title').replace('{{tag}}', slug));
   const description = t('meta_tag_description').replace('{{tag}}', slug);
   
@@ -67,7 +64,7 @@ export default async function TagPage({ params }: TagPageProps) {
   }
 
   const lang = paramLang as Language;
-  const t = (key: string) => translate(key, lang, translations);
+  const t = createTranslator(lang);
   const posts = getPostsByTag(slug, lang);
 
   if (posts.length === 0) {
