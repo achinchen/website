@@ -10,13 +10,7 @@ type Props = React.ComponentPropsWithoutRef<'pre'>;
 function CustomPre({ children, className, ...props }: Props) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
-  const [isHydrated, setIsHydrated] = useState(false);
-  
-  useEffect(() => {
-    // Set hydration flag only after client-side hydration
-    setIsHydrated(true);
-  }, []);
-  
+
   // Get translations - will use default language during SSR, user language after hydration
   const { t } = useUserTranslations();
 

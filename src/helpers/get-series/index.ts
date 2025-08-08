@@ -12,7 +12,7 @@ export interface SeriesWithPosts extends Omit<Series, 'type'> {
  */
 export function getAllSeries(lang: string = 'en'): SeriesWithPosts[] {
   const series = allSeries.filter((s) => s.lang === lang);
-  
+
   return series.map((s) => ({
     ...s,
     posts: getPostsInSeries(s.slug, lang),
@@ -42,9 +42,7 @@ export function getSeriesBySlug(slug: string, lang: string = 'en'): SeriesWithPo
  * @returns Array of posts in the series
  */
 export function getPostsInSeries(slug: string, lang: string = 'en'): Post[] {
-  const posts = allPosts.filter(
-    (post) => post.seriesSlug === slug && post.lang === lang
-  );
+  const posts = allPosts.filter((post) => post.seriesSlug === slug && post.lang === lang);
 
   // Sort by seriesOrder if available, otherwise by date
   return posts.sort((a, b) => {
@@ -71,7 +69,7 @@ export function isSeriesCompleted(slug: string, lang: string = 'en'): boolean {
  * @param currentPost Current post
  * @returns Object containing next and previous posts
  */
-export function getSeriesNavigation(currentPost: Post): { 
+export function getSeriesNavigation(currentPost: Post): {
   nextPost: Post | null;
   prevPost: Post | null;
 } {

@@ -46,4 +46,4 @@
 - [ ] 7.0 Testing and QA
   - [ ] 7.1 Write unit tests for i18n utilities and language switcher
   - [ ] 7.2 Manually test language detection, switching, and fallback behavior
-  - [ ] 7.3 Verify SEO tags and localized URLs 
+  - [ ] 7.3 Verify SEO tags and localized URLs

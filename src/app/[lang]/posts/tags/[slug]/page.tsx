@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   const t = createTranslator(lang as Language);
   const title = getTitle(t('meta_tag_title').replace('{{tag}}', slug));
   const description = t('meta_tag_description').replace('{{tag}}', slug);
-  
+
   return {
     title,
     description,
@@ -40,18 +40,18 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 
 export async function generateStaticParams() {
   const allTags = new Set<string>();
-  
-  allPosts.forEach(post => {
-    post.tags?.forEach(tag => {
+
+  allPosts.forEach((post) => {
+    post.tags?.forEach((tag) => {
       allTags.add(tag.toLowerCase());
     });
   });
 
-  return Array.from(allTags).flatMap(slug => 
-    SUPPORTED_LANGUAGES.map(lang => ({
+  return Array.from(allTags).flatMap((slug) =>
+    SUPPORTED_LANGUAGES.map((lang) => ({
       lang,
       slug,
-    }))
+    })),
   );
 }
 
@@ -74,9 +74,7 @@ export default async function TagPage({ params }: TagPageProps) {
   return (
     <div className="my-12">
       <div className="my-6 text-center">
-        <h1 className="text-3xl mb-2 font-bold">
-          {t('tags_posts_with_tag').replace('{{tag}}', slug)}
-        </h1>
+        <h1 className="mb-2 text-3xl font-bold">{t('tags_posts_with_tag').replace('{{tag}}', slug)}</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
           {getPostCountText(posts.length, t('tags_post_count'), t('tags_post_count_plural'))}
         </p>

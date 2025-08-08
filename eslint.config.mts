@@ -1,29 +1,42 @@
-import { FlatCompat } from '@eslint/eslintrc';
+import { FlatCompat } from "@eslint/eslintrc";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
+  recommendedConfig: true,
+  allConfig: true,
 });
 
 const eslintConfig = [
-  ...compat.config({
-    extends: ['next/core-web-vitals', 'next/typescript', 'prettier', 'import', '@unocss'],
-    plugins: ['prettier'],
+  {
+    ignores: ["**/node_modules/**", "**/.next/**", "**/dist/**", "**/build/**"],
+  },
+  ...compat.extends("next/core-web-vitals"),
+  ...compat.extends("prettier"),
+  ...compat.extends("import"),
+  ...compat.extends("@unocss"),
+  {
+    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.mts", "**/*.mjs"],
+    plugins: {
+      "@next/next": require("@next/eslint-plugin-next"),
+      "react-hooks": require("eslint-plugin-react-hooks"),
+      prettier: require("eslint-plugin-prettier"),
+    },
     rules: {
-      'prettier/prettier': [
-        'error',
+      "prettier/prettier": [
+        "error",
         {
           singleQuote: true,
-          parser: 'typescript',
-          trailingComma: 'all',
+          parser: "typescript",
+          trailingComma: "all",
           printWidth: 120,
           tabWidth: 2,
           semi: true,
           bracketSpacing: true,
-          endOfLine: 'auto',
+          endOfLine: "auto",
         },
       ],
     },
-  }),
+  },
 ];
 
 export default eslintConfig;

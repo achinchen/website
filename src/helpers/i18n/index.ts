@@ -17,12 +17,12 @@ export function getUserLanguage(cookies?: string): Language {
     }
     return DEFAULT_LANGUAGE;
   }
-  
+
   // Server-side without cookies parameter
   if (typeof window === 'undefined') {
     return DEFAULT_LANGUAGE;
   }
-  
+
   // Client-side: check localStorage first, then cookies
   const stored = localStorage.getItem('lang') || getCookie('lang');
   if (stored && SUPPORTED_LANGUAGES.includes(stored as Language)) {
@@ -43,38 +43,45 @@ function setCookie(name: string, value: string, days: number) {
 }
 function getCookie(name: string): string | null {
   if (typeof document === 'undefined') return null;
-  return document.cookie.split('; ').reduce((r, v) => {
-    const parts = v.split('=');
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, null as string | null);
+  return document.cookie.split('; ').reduce(
+    (r, v) => {
+      const parts = v.split('=');
+      return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+    },
+    null as string | null,
+  );
 }
 
 function getCookieFromString(name: string, cookieString: string): string | null {
-  return cookieString.split('; ').reduce((r, v) => {
-    const parts = v.split('=');
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, null as string | null);
+  return cookieString.split('; ').reduce(
+    (r, v) => {
+      const parts = v.split('=');
+      return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+    },
+    null as string | null,
+  );
 }
 
-
-export function translate(key: string, lang: Language, translations: Record<Language, Record<string, any>>): string {
+export function translate(key: string, lang: Language, translations: Record<Language, Record<string, string>>): string {
   const requestedTranslation = translations[lang]?.[key];
   if (requestedTranslation) return requestedTranslation;
-  
+
   if (lang !== DEFAULT_LANGUAGE) {
     const defaultTranslation = translations[DEFAULT_LANGUAGE]?.[key];
     if (defaultTranslation) return defaultTranslation;
   }
-  
+
   return key;
 }
 
-export function getTranslations(lang: Language, translations: Record<Language, Record<string, any>>): Record<string, any> {
+export function getTranslations(
+  lang: Language,
+  translations: Record<Language, Record<string, string>>,
+): Record<string, string> {
   const requested = translations[lang] || {};
   const fallback = translations[DEFAULT_LANGUAGE] || {};
   return { ...fallback, ...requested };
-} 
-
+}
 
 export function getPostCountText(count: number, singular: string, plural: string): string {
   if (count === 1) {

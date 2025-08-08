@@ -1,11 +1,10 @@
 'use client';
 
-import type { Translations } from '~/helpers/i18n/types';
 import type { RelatedPost } from './types';
 import { Fragment, useState, useEffect } from 'react';
 import { Post } from 'contentlayer/generated';
 import formatDate from '~/helpers/format-date';
-import { getTranslations, getUserLanguage } from '~/helpers/i18n';
+import { getUserLanguage } from '~/helpers/i18n';
 import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
 import Title from './components/Title';
 import Body from './components/Body';
@@ -14,11 +13,7 @@ import TagsList from './components/TagsList';
 import Mdx from './components/Mdx';
 import TableOfContent from './components/TableOfContent';
 import PostNavigation from './components/PostNavigation';
-
-const translations = {
-  en: require('../../../../public/locales/en/common.json'),
-  zh: require('../../../../public/locales/zh/common.json'),
-} as Record<Language, Translations>;
+import { createTranslator } from '~/helpers/i18n/translations';
 
 interface Props {
   post: Post;
@@ -29,7 +24,7 @@ interface Props {
 
 export default function PostLayout({ post, next, previous }: Props) {
   const [lang, setLang] = useState<Language>(DEFAULT_LANGUAGE);
-  
+
   const {
     date,
     title,
@@ -40,21 +35,21 @@ export default function PostLayout({ post, next, previous }: Props) {
     setLang(getUserLanguage());
   }, []);
 
-  const t = getTranslations(lang, translations);
+  const t = createTranslator(post.lang as Language);
 
   return (
     <article className="transition-colors">
       <header className="mb-4 border-b border-slate-900/10 border-b-solid py-6 text-center transition-colors space-y-1 dark:border-slate-50/[0.06]">
         <Title>{title}</Title>
         <dl className="space-y-10">
-          <dt className="sr-only">{t.published_at}</dt>
+          <dt className="sr-only">{t('published_at')}</dt>
           <dd className="text-base text-gray-500 font-medium leading-6 transition-colors dark:text-gray-400">
             <time dateTime={date}>{formatDate(date)}</time>
           </dd>
         </dl>
       </header>
 
-      <div className="pb-8 transition-colors lg:grid lg:grid-cols-4 lg:gap-x-6 lg:grid-rows-[auto_1fr]">
+      <div className="pb-8 transition-colors lg:grid lg:grid-rows-[auto_1fr] lg:grid-cols-4 lg:gap-x-6">
         <div className="pb-8 pt-10 transition-colors lg:col-span-3">
           <Body>
             <Fragment>
@@ -70,16 +65,14 @@ export default function PostLayout({ post, next, previous }: Props) {
         </aside>
       </div>
 
-      {post.seriesSlug && <Fragment>
+      {post.seriesSlug && (
+        <Fragment>
           <SeriesInfo post={post} />
-          <div className='mt-8 text-center text-0.75rem color-gray-500 dark:color-gray-400'>/////</div>
-        </Fragment>}
+          <div className="mt-8 text-center text-0.75rem color-gray-500 dark:color-gray-400">{'//////'}</div>
+        </Fragment>
+      )}
 
-      <PostNavigation
-        next={next}
-        previous={previous}
-        lang={lang}
-      />
+      <PostNavigation next={next} previous={previous} lang={lang} />
     </article>
   );
 }

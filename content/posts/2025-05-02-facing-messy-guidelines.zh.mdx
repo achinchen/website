@@ -5,7 +5,15 @@ slug: facing-messy-guidelines
 date: 2025-05-02
 image: https://images.unsplash.com/photo-1466784828399-9a9921e8bdfd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 seriesSlug: "from-senior-to-senior"
-tags: ["coding-standards", "process-improvement", "team-collaboration", "decision-making", "rfc", "code-quality"]
+tags:
+  [
+    "coding-standards",
+    "process-improvement",
+    "team-collaboration",
+    "decision-making",
+    "rfc",
+    "code-quality",
+  ]
 ---
 
 不知道大家的團隊都是怎麼訂定 Coding Guideline 或 Team Convention 呢？
@@ -14,7 +22,6 @@ tags: ["coding-standards", "process-improvement", "team-collaboration", "decisio
 如果當已經存在的規範造成現在維護高成本、未來還可能創造混亂，你又會怎麼做呢？
 
 我還不知道你怎麼想，不過接下來的故事是關於我如何做的。
-
 
 ## 混亂的規範與模糊的風格
 
@@ -28,6 +35,7 @@ Onboarding 的流程結束後，身為工程師通常希望盡快展現自己的
 相近時期的 codebase 居然有不同寫作方式，讓我陷入混亂。
 
 當你遇到這樣的狀況，你會怎麼做？
+
 - A: Codebase 真爛，就這樣馬馬虎虎的寫下去吧
 - B: 不太舒服，不過先交付吧？後續再看看該不該討論
 - C: 其他，我要來改變
@@ -36,7 +44,6 @@ Onboarding 的流程結束後，身為工程師通常希望盡快展現自己的
 本章完。
 
 並不是，讓我細細說明吧。
-
 
 ## 一步步走向理解與改變
 
@@ -66,7 +73,6 @@ review 只限於 reviewer 和 author，未參與的成員不會知道方向是�
 而對我來說，沒有共識，就是沒有產生可被執行的行為準則。
 團隊因此無法有效共同打造我們想要的 codebase。
 
-
 ## 我的提案嘗試
 
 得出這個想法後，我找上 R（我的 Engineer Manager）確認目前團隊是否技術討論多但結論少。
@@ -74,6 +80,7 @@ review 只限於 reviewer 和 author，未參與的成員不會知道方向是�
 
 我選擇了一個簡單的提案做開場：恢復一個小的寫作風格規則。
 我邀請大家回應並確認，統整意見後，設定了兩個 action items：
+
 - 更新 Coding Guideline 文件
 - 調整 Linter Rules
 
@@ -82,11 +89,11 @@ review 只限於 reviewer 和 author，未參與的成員不會知道方向是�
 <Spacer />
 
 在提案順利完成後，我開了一個「提案的提案」討論，定義了四個階段：
-- 提案：發現問題的背景、問題本身的研究、提案的方向及相關的 Sample Code 
+
+- 提案：發現問題的背景、問題本身的研究、提案的方向及相關的 Sample Code
 - 討論：常規的 RFC 流程，邀請團隊的所有成員參與討論，同意的話就直接 marked，不同意或是有建議的資訊則接續討論，提案人需要回應跟討論出能夠彼此同意的結論。
 - 結論：提案人統整結論及 action items 後與團隊成員做最後確認，如果有異議則在這裡做覆核討論直到弭平。
 - 行動：提案人需要為 action items 負責，也可以找有興趣的同事一起協作，是追蹤項目則由提案人負責。需要調整人力的話則再跟 EM 討論，行動完成後提案才能算完成。
-
 
 ## 成為團隊的共識
 

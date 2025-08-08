@@ -11,8 +11,8 @@ export default function LanguageHtmlUpdater() {
     // Extract language from pathname
     const segments = pathname.split('/');
     const langFromPath = segments[1];
-    const currentLang = SUPPORTED_LANGUAGES.includes(langFromPath as Language) 
-      ? langFromPath as Language 
+    const currentLang = SUPPORTED_LANGUAGES.includes(langFromPath as Language)
+      ? (langFromPath as Language)
       : DEFAULT_LANGUAGE;
 
     // Update HTML lang attribute
@@ -22,4 +22,4 @@ export default function LanguageHtmlUpdater() {
   }, [pathname]);
 
   return null; // This component doesn't render anything
-} 
+}

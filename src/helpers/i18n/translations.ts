@@ -21,12 +21,12 @@ export function getTranslations(lang: Language): typeof en {
  */
 export function getUserTranslations(): typeof en {
   let lang: Language = DEFAULT_LANGUAGE;
-  
+
   if (typeof window !== 'undefined') {
     const userLang = getUserLanguage();
     if (userLang) lang = userLang;
   }
-  
+
   return getTranslations(lang);
 }
 
@@ -36,12 +36,12 @@ export function getUserTranslations(): typeof en {
  */
 export function useUserTranslations(): { t: typeof en; lang: Language } {
   let lang: Language = DEFAULT_LANGUAGE;
-  
+
   if (typeof window !== 'undefined') {
     const userLang = getUserLanguage();
     if (userLang) lang = userLang;
   }
-  
+
   const t = getTranslations(lang);
   return { t, lang };
 }

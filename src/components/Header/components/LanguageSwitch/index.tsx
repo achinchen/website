@@ -1,20 +1,18 @@
-"use client";
+'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { LANGUAGE_LABELS, SUPPORTED_LANGUAGES, Language, DEFAULT_LANGUAGE } from "~/helpers/i18n/config";
-import { setUserLanguage } from "~/helpers/i18n";
+import { LANGUAGE_LABELS, SUPPORTED_LANGUAGES, Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
+import { setUserLanguage } from '~/helpers/i18n';
 
 export default function LanguageSwitch() {
   const pathname = usePathname();
   const router = useRouter();
-  
+
   // Extract current language from URL path
   const getCurrentLang = (): Language => {
     const segments = pathname.split('/');
     const langFromPath = segments[1];
-    return SUPPORTED_LANGUAGES.includes(langFromPath as Language) 
-      ? langFromPath as Language 
-      : DEFAULT_LANGUAGE;
+    return SUPPORTED_LANGUAGES.includes(langFromPath as Language) ? (langFromPath as Language) : DEFAULT_LANGUAGE;
   };
 
   const currentLang = getCurrentLang();
@@ -22,27 +20,27 @@ export default function LanguageSwitch() {
   const onSwitch = (targetLang: Language) => {
     if (targetLang !== currentLang) {
       setUserLanguage(targetLang);
-      
+
       const segments = pathname.split('/');
       if (SUPPORTED_LANGUAGES.includes(segments[1] as Language)) {
         segments[1] = targetLang;
       } else {
         segments.splice(1, 0, targetLang);
       }
-      
+
       const newPath = segments.join('/');
       router.push(newPath);
     }
   };
 
   return (
-    <nav aria-label="Language Switcher" className="flex gap-2 items-center">
+    <nav aria-label="Language Switcher" className="flex items-center gap-2">
       {SUPPORTED_LANGUAGES.filter((language) => language !== currentLang).map((language) => (
         <button
           key={language}
           type="button"
           aria-label={LANGUAGE_LABELS[language].label}
-          className="rounded-md p-2 text-sm text-gray-800 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800 border-none bg-transparent"
+          className="rounded-md border-none bg-transparent p-2 text-sm text-gray-800 transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800"
           onClick={() => onSwitch(language)}
         >
           <span className="text-md" role="img" aria-hidden="true">

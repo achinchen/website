@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: SeriesPageProps): Promise<Met
 
   const t = createTranslator(lang as Language);
   const title = getTitle(t('meta_series_title').replace('{{name}}', series.name));
-  
+
   return {
     title,
     description: series.description,
@@ -38,13 +38,13 @@ export async function generateMetadata({ params }: SeriesPageProps): Promise<Met
 }
 
 export async function generateStaticParams() {
-  const seriesSlugs = Array.from(new Set(allSeries.map(series => series.slug)));
+  const seriesSlugs = Array.from(new Set(allSeries.map((series) => series.slug)));
 
-  return seriesSlugs.flatMap(slug => 
-    SUPPORTED_LANGUAGES.map(lang => ({
+  return seriesSlugs.flatMap((slug) =>
+    SUPPORTED_LANGUAGES.map((lang) => ({
       lang,
       slug,
-    }))
+    })),
   );
 }
 
@@ -67,14 +67,12 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
   const postCount = series.posts.length;
 
   return (
-    <div className="my-12 max-w-4xl mx-auto">
+    <div className="mx-auto my-12 max-w-4xl">
       <div className="my-6 text-center">
         <h1 className="text-3xl font-bold">{series.name}</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
-          {series.description}
-        </p>
-        <div className="mt-2 flex items-center gap-4 justify-center">
-          <div className="inline-block px-3 py-1 text-sm rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+        <p className="text-lg text-gray-600 dark:text-gray-300">{series.description}</p>
+        <div className="mt-2 flex items-center justify-center gap-4">
+          <div className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 dark:bg-blue-900 dark:text-blue-200">
             {t(series.status === 'completed' ? 'series_status_completed' : 'series_status_ongoing')}
           </div>
           <span className="text-sm text-gray-600 dark:text-gray-400">
@@ -88,8 +86,8 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
           {series.posts.map((post, index) => (
             <div key={post.slug} className="relative">
               <div className="relative flex items-center space-x-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                  <span className="text-sm font-medium text-blue-800 dark:text-blue-200">
+                <div className="h-8 w-8 flex flex-shrink-0 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900">
+                  <span className="text-sm text-blue-800 font-medium dark:text-blue-200">
                     {post.seriesOrder || index + 1}
                   </span>
                 </div>

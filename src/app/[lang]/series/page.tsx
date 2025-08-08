@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: SeriesPageProps): Promise<Met
   const { lang: paramLang } = await params;
   const t = createTranslator(paramLang as Language);
   const title = getTitle(t('meta_series_list_title'));
-  
+
   return {
     title,
     description: t('meta_series_list_description'),
@@ -47,12 +47,10 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
   const series = getAllSeries(lang);
 
   return (
-    <div className="my-12 min-w-xl mx-auto">
+    <div className="mx-auto my-12 min-w-xl">
       <div className="my-6 text-center">
         <h1 className="text-3xl font-bold">{t('series')}</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
-          {t('series_list')}
-        </p>
+        <p className="text-lg text-gray-600 dark:text-gray-300">{t('series_list')}</p>
       </div>
       <SeriesList series={series} lang={lang} />
     </div>

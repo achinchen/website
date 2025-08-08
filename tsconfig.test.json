@@ -30,9 +30,5 @@
     "jest.setup.ts",
     "tests/__mocks__/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    ".contentlayer"
-  ]
-} 
+  "exclude": ["node_modules", ".next", ".contentlayer"]
+}
