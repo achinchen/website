@@ -51,14 +51,13 @@ export default async function TagsPage({ params }: TagsPageProps) {
   const tags = getAllTags(lang);
 
   return (
-    <div className="my-12">
+    <div className="my-12 max-w-5xl mx-auto">
       <div className="my-6 text-center">
         <h1 className="text-3xl font-bold mb-2">{t('tags')}</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
           {t('tags_browse_by_topic')}
         </p>
       </div>
-
       <TagsList tags={tags} lang={lang} />
     </div>
   );

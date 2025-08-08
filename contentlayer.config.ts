@@ -18,6 +18,7 @@ export const Series = defineDocumentType(() => ({
     lang: { type: 'string', required: false, default: 'en' },
   },
   computedFields: {
+    type: { type: 'string', resolve: () => 'Series' },
     path: { type: 'string', resolve: (series) => `/series/${series.slug}` },
     lang: {
       type: 'string',

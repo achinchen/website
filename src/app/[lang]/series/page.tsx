@@ -51,7 +51,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
   const series = getAllSeries(lang);
 
   return (
-    <div className="my-12">
+    <div className="my-12 min-w-xl mx-auto">
       <div className="my-6 text-center">
         <h1 className="text-3xl font-bold">{t('series')}</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">

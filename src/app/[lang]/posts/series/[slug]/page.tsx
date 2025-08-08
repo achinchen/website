@@ -70,7 +70,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
   const postCount = series.posts.length;
 
   return (
-    <div className="my-12">
+    <div className="my-12 max-w-4xl mx-auto">
       <div className="my-6 text-center">
         <h1 className="text-3xl font-bold">{series.name}</h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
