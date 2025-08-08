@@ -51,7 +51,7 @@ export function getPostsInSeries(slug: string, lang: string = 'en'): Post[] {
     if (a.seriesOrder && b.seriesOrder) {
       return a.seriesOrder - b.seriesOrder;
     }
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
   });
 }
 
