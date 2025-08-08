@@ -3,8 +3,16 @@ title: "我的文件之道"
 description: "關於我如何寫文件的思考跟實踐"
 slug: my-philosophy-of-documentation
 date: 2025-05-25
-type: Post
 image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+seriesSlug: "from-senior-to-senior"
+tags:
+  [
+    "documentation",
+    "communication",
+    "knowledge-management",
+    "software-engineering",
+    "team-collaboration",
+  ]
 ---
 
 文件呀，文件，多少人假汝過時之名行不寫之實？
@@ -31,7 +39,6 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 
 於是我就開始踏上思考之旅，這個題目暫時叫做：**文件之於軟體工程的意義**。
 
-
 ## 思考的開始
 
 首先從關鍵字開始：文件、軟體工程、意義。
@@ -41,7 +48,7 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 
 什麼是軟體工程呢？你有曾想過這個問題嗎？
 
-在探索的過程中，我讀過一些文件與文章，其中最喜歡的說法來自軟體工程早期的先驅、首先提出 *information hiding* 的 David Lorge Parnas：
+在探索的過程中，我讀過一些文件與文章，其中最喜歡的說法來自軟體工程早期的先驅、首先提出 _information hiding_ 的 David Lorge Parnas：
 
 > Software engineering is the multi-person development of multi-version programs.
 
@@ -49,7 +56,6 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 這裡的「多人多版本」就算是一人團隊，也會包含過去、未來及現在的自己。
 
 所以軟體工程師的專業，不只是把程式交付開發完成，還包含能在多人多版控的環境下，把這件事做好。
-
 
 <Spacer />
 
@@ -65,7 +71,6 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 
 也許，這就是文件之於軟體工程的意義吧。
 
-
 ## 從觀念到策略
 
 洋洋灑灑地分享了我的思考脈絡，不知道你會不會覺得很瑣碎？
@@ -78,20 +83,18 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 
 因此，在這份工作有機會重新面對「寫文件」的議題時，我想要找到對軟體工程與公司都有價值的選擇。畢竟文件之間還是有權重差別的。我希望除了交付物，這個過程本身對彼此也有意義。
 
-
 ## 選擇文件的三個評估角度
 
 我想著，之前老闆的顧慮與現在老闆的不一樣，但大方向還是團隊合作與公司價值。所以我試著用三個方向去思考：
 
 - A: 生命週期
-每份文件的服務時間不同，有些只提供短期專案資訊，有的則會長期存在。這讓我開始用不同角度去看文件維護程度，效期與責任範圍密切相關。
+  每份文件的服務時間不同，有些只提供短期專案資訊，有的則會長期存在。這讓我開始用不同角度去看文件維護程度，效期與責任範圍密切相關。
 
 - B: 詢問頻次
-越常被問的問題越值得寫成文件。這不只是節省回應時間，更是知識落差的指標。如果某知識是 single point of failure，就必須水平擴展（horizontal scaling），把知識轉移出去。
+  越常被問的問題越值得寫成文件。這不只是節省回應時間，更是知識落差的指標。如果某知識是 single point of failure，就必須水平擴展（horizontal scaling），把知識轉移出去。
 
 - C: 風險程度
-有些資訊雖然少被問到，但一旦出事就難以補救、甚至影響重大。這類文件像逃生手冊，不常用，但用到時一定要能用。
-
+  有些資訊雖然少被問到，但一旦出事就難以補救、甚至影響重大。這類文件像逃生手冊，不常用，但用到時一定要能用。
 
 ## 降低寫文件的摩擦力
 
@@ -100,16 +103,14 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 
 所以，我借鏡需求開發流程（有 requirement review、design review），嘗試把文件產出也拆解成可協作的過程。
 
-
 - A: 動筆前，先定義文件的存在意義
-明確讀者是誰、何時會用、要解決什麼任務、技術背景、邊界範圍與不解決的問題。
+  明確讀者是誰、何時會用、要解決什麼任務、技術背景、邊界範圍與不解決的問題。
 
 - B: 從 Outline 開始，找同事 Pair Review
-先交 outline 而不是整包文件，降低修改成本，也避免「文件海壓力」讓人不想看。
+  先交 outline 而不是整包文件，降低修改成本，也避免「文件海壓力」讓人不想看。
 
 - C: 適時剝離細節，避免模糊焦點
-聚焦讀者任務，將額外細節放進 reference 或 FAQ，讓文件保持清晰可讀。
-
+  聚焦讀者任務，將額外細節放進 reference 或 FAQ，讓文件保持清晰可讀。
 
 ## 文件的意義
 
@@ -120,9 +121,7 @@ image: https://images.unsplash.com/photo-1724500307191-a4f2f7351334?q=80&w=1470&
 
 所以，與其說是在產出文件，不如說是透過文件讓團隊的 mental model 互相碰撞，並留下可追蹤的決策歷程。
 
-
 這正是軟體工程強調版本控制與知識可演進的核心。
-
 
 ## 回到原點的問題
 

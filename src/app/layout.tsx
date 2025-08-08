@@ -5,7 +5,7 @@ import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 import LanguageHtmlUpdater from '~/components/LanguageHtmlUpdater';
 import { SITE } from '~/configs';
-import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES, Language } from '~/helpers/i18n/config';
+import { DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
 import './styles/index.css';
 
 export const metadata: Metadata = {
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
       'application/atom+xml': [{ url: '/atom.xml' }],
     },
     languages: {
-      'en': `${SITE.fqdn}/en`,
-      'zh': `${SITE.fqdn}/zh`,
+      en: `${SITE.fqdn}/en`,
+      zh: `${SITE.fqdn}/zh`,
     },
   },
 };
@@ -57,7 +57,7 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="zh" href={`${SITE.fqdn}/zh`} />
         <link rel="alternate" hrefLang="x-default" href={SITE.fqdn} />
       </head>
-      <body className="min-h-100vh transition-colors">
+      <body className="min-h-100vh flex flex-col transition-color">
         <LanguageHtmlUpdater />
         <ThemeProvider attribute="class">
           <Header />

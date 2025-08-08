@@ -1,0 +1,36 @@
+export interface Translations {
+  language: string;
+  switch_language: string;
+  home: string;
+  posts: string;
+  previous_post: string;
+  next_post: string;
+  published_at: string;
+  copied: string;
+  not_found: string;
+  back_to_home: string;
+  series: string;
+  series_list: string;
+  series_status_ongoing: string;
+  series_status_completed: string;
+  series_post_count: string;
+  series_post_count_plural: string;
+  series_navigation_next: string;
+  series_navigation_previous: string;
+  tags: string;
+  tags_list: string;
+  tags_post_count: string;
+  tags_post_count_plural: string;
+  tags_browse_by_topic: string;
+  tags_posts_with_tag: string;
+  no_series_available: string;
+  no_tags_available: string;
+  meta_series_title: string;
+  meta_series_list_title: string;
+  meta_series_list_description: string;
+  meta_tags_title: string;
+  meta_tags_list_description: string;
+  meta_tag_title: string;
+  meta_tag_description: string;
+  toggle_theme_mode: string;
+}

@@ -21,6 +21,7 @@ pnpm add -D jest @types/jest @testing-library/react @testing-library/jest-dom @t
 ### 2. Verify Configuration Files
 
 Ensure these files exist in the project root:
+
 - `jest.config.js` - Jest configuration (JavaScript - **avoids ts-node dependency**)
 - `jest.setup.ts` - Jest setup and mocks (TypeScript)
 - `tsconfig.test.json` - Separate TypeScript config for tests
@@ -47,20 +48,25 @@ npm test -- LanguageSwitch.test.tsx
 ## Test Structure
 
 ### Unit Tests
+
 - `src/helpers/i18n/__tests__/` - Tests for i18n utility functions
 - `src/helpers/get-posts/__tests__/` - Tests for post retrieval functions
 - `src/components/**/__tests__/` - Tests for React components
 
 ### Integration Tests
+
 - `scripts/test-i18n.ts` - Comprehensive integration test script
 
 ### Manual Tests
+
 - `tests/manual-test-checklist.md` - Comprehensive manual testing checklist
 
 ## Configuration Files
 
 ### jest.config.js
+
 JavaScript configuration file for Jest with:
+
 - **No ts-node dependency** - Jest config is in JavaScript
 - Next.js integration via `next/jest`
 - TypeScript support with `ts-jest` using separate test config
@@ -69,14 +75,18 @@ JavaScript configuration file for Jest with:
 - References `tsconfig.test.json` for TypeScript compilation
 
 ### jest.setup.ts
+
 TypeScript setup file with:
+
 - Testing Library DOM matchers
 - Next.js router and navigation mocks
 - Browser API mocks (localStorage, matchMedia, etc.)
 - Console suppression for cleaner test output
 
 ### tsconfig.test.json
+
 Separate TypeScript configuration for tests:
+
 - Extends main `tsconfig.json`
 - Includes Jest and testing-library types
 - Uses CommonJS modules for Jest compatibility
@@ -84,7 +94,9 @@ Separate TypeScript configuration for tests:
 - **Used by ts-jest for TypeScript compilation**
 
 ### tsconfig.json (Updated)
+
 Main TypeScript configuration:
+
 - **Excludes test files** to avoid conflicts
 - Keeps app build separate from test build
 - Maintains Next.js optimizations
@@ -97,16 +109,18 @@ This setup provides the best of both worlds:
 ✅ **TypeScript test files** - Full TypeScript support for tests  
 ✅ **Separate configurations** - Clean separation between app and test builds  
 ✅ **Type safety** - Jest, testing-library, and custom types included  
-✅ **Performance** - No extra compilation overhead for Jest config  
+✅ **Performance** - No extra compilation overhead for Jest config
 
 ## Running Tests Without Jest
 
 If you prefer not to set up Jest, you can use alternative testing approaches:
 
 ### 1. Manual Testing
+
 Use the comprehensive checklist in `manual-test-checklist.md` to verify all functionality.
 
 ### 2. Simple Script Testing
+
 Run the integration test script:
 
 ```bash
@@ -114,6 +128,7 @@ npx ts-node scripts/test-i18n.ts
 ```
 
 ### 3. Browser Testing
+
 Start the development server and test in browser:
 
 ```bash
@@ -121,6 +136,7 @@ npm run dev
 ```
 
 Then visit:
+
 - http://localhost:3000/en
 - http://localhost:3000/zh
 - Test language switching functionality
@@ -128,28 +144,33 @@ Then visit:
 ## Test Coverage Areas
 
 ### ✅ Configuration Testing
+
 - Language constants and labels
 - Supported languages validation
 - Default language settings
 
 ### ✅ Utility Function Testing
+
 - Browser language detection
 - User language preferences (localStorage/cookies)
 - Translation fallback logic
 - Server-side vs client-side behavior
 
 ### ✅ Content Management Testing
+
 - Post retrieval with language filtering
 - Language-based content fallback
 - File naming convention validation
 
 ### ✅ Component Testing
+
 - Language switcher rendering
 - URL-based language detection
 - Navigation functionality
 - Accessibility compliance
 
 ### ✅ Integration Testing
+
 - End-to-end language switching
 - URL routing with language prefixes
 - SEO meta tags and hreflang
@@ -188,6 +209,7 @@ Then visit:
 ### Getting Help
 
 If you encounter issues:
+
 1. Check the manual testing checklist first
 2. Run the integration test script
 3. Verify all dependencies are installed
@@ -196,7 +218,8 @@ If you encounter issues:
 ## Contributing
 
 When adding new i18n features:
+
 1. Add corresponding unit tests
 2. Update the manual testing checklist
 3. Update integration test script if needed
-4. Ensure all tests pass before submitting 
+4. Ensure all tests pass before submitting

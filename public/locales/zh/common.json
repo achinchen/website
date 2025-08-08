@@ -10,12 +10,30 @@
   "not_found": "找不到頁面",
   "back_to_home": "返回首頁",
   "homepage_title": "Chin Chen",
-  "homepage_description": [
-    "嗨，我是 Chin Chen，一位熱愛學習、專注於 web 的軟體工程師。",
-    "我閱讀書籍、收聽 Podcast，目前在學習如何積極倡導更好的軟體工程管理。",
-    "我相信簡單是真理，就像宇宙運行的法則一樣。",
-    "持續探索那些激發好奇心的事物。"
-  ],
+  "homepage_description": "嗨，我是 Chin Chen，\n一位熱愛學習、專注於 web 的軟體工程師。我閱讀書籍、收聽 Podcast，目前在學習如何積極倡導更好的軟體工程管理。我相信簡單是真理，就像宇宙運行的法則一樣。持續探索那些激發好奇心的事物。",
   "homepage_latest": "最新文章",
-  "toggle_theme_mode": "切換主題模式"
-} 
+  "toggle_theme_mode": "切換主題模式",
+  "series": "系列",
+  "series_status_ongoing": "連載中",
+  "series_status_completed": "已完結",
+  "series_post_count": "1 篇文章",
+  "series_post_count_plural": "{{count}} 篇文章",
+  "series_navigation_next": "系列下一篇",
+  "series_navigation_previous": "系列上一篇",
+  "tags": "標籤",
+  "tags_list": "瀏覽所有標籤",
+  "tags_post_count": "1 篇文章",
+  "tags_post_count_plural": "{{count}} 篇文章",
+  "tags_browse_by_topic": "按主題瀏覽文章",
+  "tags_posts_with_tag": "標籤為「{{tag}}」的文章",
+  "no_series_available": "暫無系列文章",
+  "no_tags_available": "暫無標籤",
+  "meta_series_title": "{{name}} - 系列",
+  "meta_series_list_description": "瀏覽所有系列文章",
+  "meta_tags_title": "標籤",
+  "meta_tags_list_description": "瀏覽所有文章標籤",
+  "meta_tag_title": "標籤為「{{tag}}」的文章",
+  "meta_tag_description": "瀏覽所有標籤為「{{tag}}」的文章",
+  "series_list": "瀏覽所有系列",
+  "meta_series_list_title": "系列"
+}

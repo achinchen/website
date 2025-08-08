@@ -24,7 +24,15 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.mjs",  ".contentlayer/generated", "next-sitemap.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "postcss.config.mjs",
+    ".contentlayer/generated",
+    "next-sitemap.config.js"
+  ],
   "exclude": [
     "node_modules",
     "**/*.test.ts",

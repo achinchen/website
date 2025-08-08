@@ -13,13 +13,13 @@ describe('i18n utilities', () => {
     // Clear mocks
     mockLocalStorage.getItem.mockClear();
     mockLocalStorage.setItem.mockClear();
-    
+
     // Reset document.cookie
     Object.defineProperty(document, 'cookie', {
       writable: true,
       value: '',
     });
-    
+
     // Reset navigator.lang
     Object.defineProperty(navigator, 'language', {
       writable: true,
@@ -98,7 +98,7 @@ describe('i18n utilities', () => {
   describe('setUserLanguage', () => {
     test('sets language in localStorage and cookie', () => {
       setUserLanguage('zh');
-      
+
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('lang', 'zh');
       expect(document.cookie).toContain('lang=zh');
     });
@@ -135,7 +135,7 @@ describe('i18n utilities', () => {
 
     test('returns merged translations with requested language priority', () => {
       const result = getTranslations('zh', mockTranslations);
-      
+
       expect(result.hello).toBe('你好'); // Chinese version
       expect(result.goodbye).toBe('再見'); // Chinese version
       expect(result.english_only).toBe('English only'); // Fallback to English
@@ -143,7 +143,7 @@ describe('i18n utilities', () => {
 
     test('returns English translations when requested language is English', () => {
       const result = getTranslations('en', mockTranslations);
-      
+
       expect(result.hello).toBe('Hello');
       expect(result.goodbye).toBe('Goodbye');
       expect(result.english_only).toBe('English only');
@@ -154,9 +154,9 @@ describe('i18n utilities', () => {
         en: { hello: 'Hello' },
         zh: {}, // Empty Chinese translations
       };
-      
+
       const result = getTranslations('zh', incompleteTranslations);
       expect(result.hello).toBe('Hello'); // Falls back to English
     });
   });
-}); 
+});

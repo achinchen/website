@@ -10,12 +10,30 @@
   "not_found": "Not Found",
   "back_to_home": "Back to Home",
   "homepage_title": "Chin Chen",
-  "homepage_description": [
-    "Hey, I'm Chin Chen, a passionate learner and web-focused engineer.",
-    "I read books, listen to podcasts, and actively advocate for better software engineering management.",
-    "I believe simplicity holds its own beauty—just like the laws that govern the universe.",
-    "Let’s keep exploring what sparks curiosity."
-  ],
+  "homepage_description": "Hey, I'm Chin Chen,\na passionate learner and web-focused engineer. \nI read books, listen to podcasts, and actively advocate for better software engineering management.\nI believe simplicity holds its own beauty—just like the laws that govern the universe. Let’s keep exploring what sparks curiosity.",
   "homepage_latest": "Latest posts",
-  "toggle_theme_mode": "Toggle Theme Mode"
-} 
+  "toggle_theme_mode": "Toggle Theme Mode",
+  "series": "Series",
+  "series_list": "Browse all series",
+  "series_status_ongoing": "Ongoing",
+  "series_status_completed": "Completed",
+  "series_post_count": "1 post",
+  "series_post_count_plural": "{{count}} posts",
+  "series_navigation_next": "Next in series",
+  "series_navigation_previous": "Previous in series",
+  "tags": "Tags",
+  "tags_list": "Browse all tags",
+  "tags_post_count": "1 post",
+  "tags_post_count_plural": "{{count}} posts",
+  "tags_browse_by_topic": "Browse articles by topic",
+  "tags_posts_with_tag": "Posts tagged with \"{{tag}}\"",
+  "no_series_available": "No series available yet",
+  "no_tags_available": "No tags available yet",
+  "meta_series_title": "{{name}} - Series",
+  "meta_series_list_title": "Series",
+  "meta_series_list_description": "Browse all article series",
+  "meta_tags_title": "Tags",
+  "meta_tags_list_description": "Browse all article tags",
+  "meta_tag_title": "Posts tagged with \"{{tag}}\"",
+  "meta_tag_description": "Browse all posts tagged with \"{{tag}}\""
+}

@@ -3,34 +3,16 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { copyToClipboard, removeDuplicateNewLine } from './utils';
-import { getUserLanguage } from '~/helpers/i18n';
-import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
-
-// Use require to avoid TypeScript linter errors for deep JSON imports
-const en = require('public/locales/en/common.json');
-const zh = require('public/locales/zh/common.json');
-
-const translations: Record<Language, typeof en> = { en, zh };
-function getTranslations(lang: Language) {
-  return translations[lang] || translations[DEFAULT_LANGUAGE];
-}
+import { useUserTranslations } from '~/helpers/i18n/translations';
 
 type Props = React.ComponentPropsWithoutRef<'pre'>;
 
 function CustomPre({ children, className, ...props }: Props) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
-  const [lang, setLang] = useState<Language>(DEFAULT_LANGUAGE);
-  
-  useEffect(() => {
-    // Set language only after hydration to avoid SSR mismatch
-    if (typeof window !== 'undefined') {
-      const userLang = getUserLanguage();
-      if (userLang) setLang(userLang);
-    }
-  }, []);
-  
-  const t = getTranslations(lang);
+
+  // Get translations - will use default language during SSR, user language after hydration
+  const { t } = useUserTranslations();
 
   const onClick = async () => {
     if (preRef.current?.innerText) {
@@ -49,7 +31,7 @@ function CustomPre({ children, className, ...props }: Props) {
       <pre {...props} ref={preRef} className={clsx(className, 'focus:outline-none')}>
         <div className="absolute right-0 top-0 m-2 flex items-center rounded-md bg-[#282a36] dark:bg-[#262626]">
           <span
-            className={clsx('hidden px-2 text-xs text-blue-400 ease-in', {
+            className={clsx('hidden px-2 text-xs text-yellow-400 ease-in', {
               'group-hover:flex': copied,
             })}
           >
@@ -63,7 +45,7 @@ function CustomPre({ children, className, ...props }: Props) {
             className={clsx(
               'hidden rounded-md border bg-transparent p-2 transition ease-in focus:outline-none group-hover:flex',
               {
-                'border-blue-400': copied,
+                'border-slate-400': copied,
                 'border-gray-600 hover:border-gray-400 focus:ring-4 focus:ring-gray-200/50 dark:border-gray-700 dark:hover:border-gray-400':
                   !copied,
               },
