@@ -9,7 +9,7 @@ import { getTranslations, getUserLanguage } from '~/helpers/i18n';
 import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
 import Title from './components/Title';
 import Body from './components/Body';
-import SeriesInfo from './components/SeriesInfo';
+import SeriesInfo from './components/SeriesNavigation';
 import TagsList from './components/TagsList';
 import Mdx from './components/Mdx';
 import TableOfContent from './components/TableOfContent';
@@ -69,6 +69,11 @@ export default function PostLayout({ post, next, previous }: Props) {
           </div>
         </aside>
       </div>
+
+      {post.seriesSlug && <Fragment>
+          <SeriesInfo post={post} />
+          <div className='mt-8 text-center text-0.75rem color-gray-500 dark:color-gray-400'>/////</div>
+        </Fragment>}
 
       <PostNavigation
         next={next}
