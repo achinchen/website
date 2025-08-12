@@ -6,6 +6,8 @@ import { Post } from 'contentlayer/generated';
 import formatDate from '~/helpers/format-date';
 import { getUserLanguage } from '~/helpers/i18n';
 import { Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
+import { createTranslator } from '~/helpers/i18n/translations';
+import Divider from '~/components/Divider';
 import Title from './components/Title';
 import Body from './components/Body';
 import SeriesInfo from './components/SeriesNavigation';
@@ -13,7 +15,6 @@ import TagsList from './components/TagsList';
 import Mdx from './components/Mdx';
 import TableOfContent from './components/TableOfContent';
 import PostNavigation from './components/PostNavigation';
-import { createTranslator } from '~/helpers/i18n/translations';
 
 interface Props {
   post: Post;
@@ -68,7 +69,7 @@ export default function PostLayout({ post, next, previous }: Props) {
       {post.seriesSlug && (
         <Fragment>
           <SeriesInfo post={post} />
-          <div className="mt-8 text-center text-0.75rem color-gray-500 dark:color-gray-400">{'//////'}</div>
+          <Divider className="text-center" />
         </Fragment>
       )}
 
