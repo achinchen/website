@@ -6,7 +6,7 @@ export default function MdxImage({ src, height, width, base64, alt, ...otherProp
   if (!src) return null;
 
   if (typeof src === 'string' && (!height || !width)) {
-    return <img src={src} height={height} width={width} alt={alt} {...otherProps} />;
+    return <Image src={src} height={height} width={width} alt={alt} {...otherProps} />;
   }
 
   return (

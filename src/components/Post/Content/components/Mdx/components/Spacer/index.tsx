@@ -17,5 +17,5 @@ type Props = {
 export default function Spacer({ lines = 1, className = '' }: Props) {
   const heightClass = heightClasses[lines];
 
-  return <div className={`w-full ${heightClass} ${className}`} aria-hidden="true" />;
+  return <div className={`w-full ${heightClass}  ${className}`} aria-hidden="true" />;
 }

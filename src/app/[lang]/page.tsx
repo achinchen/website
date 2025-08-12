@@ -48,12 +48,14 @@ export default async function LanguagePage({ params }: Props) {
         authorName={SITE.author}
         description={SITE.description}
       />
-      <div className="mx-auto py-12 max-w-3xl">
+      <div className="mx-auto max-w-3xl py-12">
         <header className="my-12 transition-colors">
           <h1 className="text-center text-5xl sm:text-left">{t.homepage_title}</h1>
-          <p className="mt-14 whitespace-break-spaces text-wrap leading-loose md:leading-3em">{t.homepage_description}</p>
+          <p className="mt-14 whitespace-break-spaces text-wrap leading-loose md:leading-3em">
+            {t.homepage_description}
+          </p>
         </header>
-        <Divider className='text-center md:text-left' />
+        <Divider className="text-center md:text-left" />
         <main className="py-3 transition-colors">
           <h2 className="mb-4 text-xl">{t.homepage_latest}</h2>
           <PostList posts={posts} />

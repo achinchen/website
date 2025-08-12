@@ -9,14 +9,12 @@ import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE, Language } from '~/helpers/i18n/
  */
 export function useCurrentLanguage(): Language {
   const pathname = usePathname();
-  
+
   // Extract current language from URL path
   const segments = pathname.split('/');
   const langFromPath = segments[1];
-  
-  return SUPPORTED_LANGUAGES.includes(langFromPath as Language) 
-    ? (langFromPath as Language) 
-    : DEFAULT_LANGUAGE;
+
+  return SUPPORTED_LANGUAGES.includes(langFromPath as Language) ? (langFromPath as Language) : DEFAULT_LANGUAGE;
 }
 
 /**

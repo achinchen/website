@@ -64,21 +64,20 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
     notFound();
   }
 
-
   return (
     <div className="mx-auto my-12 max-w-4xl">
       <SeriesInfo series={series} />
       <main className="my-6">
-          {series.posts.map((post, index) => (
-            <div key={post.slug} className="flex md:items-center space-x-4">
-                <span className="mt-5 md:mt-0 font-400 text-blue-700 dark:text-blue-300">
-                  #{post.seriesOrder || index + 1}
-                </span>
-              <div className="flex-grow">
-                <PostList posts={[post]} />
-              </div>
+        {series.posts.map((post, index) => (
+          <div key={post.slug} className="flex md:items-center space-x-4">
+            <span className="mt-5 text-blue-700 font-400 md:mt-0 dark:text-blue-300">
+              #{post.seriesOrder || index + 1}
+            </span>
+            <div className="flex-grow">
+              <PostList posts={[post]} />
             </div>
-          ))}
+          </div>
+        ))}
       </main>
     </div>
   );

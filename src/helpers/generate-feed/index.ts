@@ -10,7 +10,7 @@ export const FEED: Record<Language, { RSS: string; JSON: string; ATOM: string }>
   zh: { RSS: '', JSON: '', ATOM: '' },
 };
 
-type FeedType = keyof typeof FEED[Language];
+type FeedType = keyof (typeof FEED)[Language];
 
 function generateFeed(lang: Language = DEFAULT_LANGUAGE) {
   const author = {
