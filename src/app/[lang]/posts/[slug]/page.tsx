@@ -13,12 +13,12 @@ export const revalidate = 1800;
 export const dynamicParams = false;
 
 export const generateStaticParams = async () => {
-  const posts = getPosts();
   const params: { lang: string; slug: string }[] = [];
 
-  // Generate params for all language/slug combinations
-  posts.forEach((post) => {
-    SUPPORTED_LANGUAGES.forEach((lang) => {
+  // Generate params for each language separately to ensure posts exist
+  SUPPORTED_LANGUAGES.forEach((lang) => {
+    const posts = getPosts(lang);
+    posts.forEach((post) => {
       params.push({ lang, slug: post.slug });
     });
   });

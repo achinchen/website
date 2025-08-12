@@ -43,22 +43,22 @@ function CustomPre({ children, className, ...props }: Props) {
             onClick={onClick}
             disabled={copied}
             className={clsx(
-              'hidden rounded-md border bg-transparent p-2 transition ease-in focus:outline-none group-hover:flex',
+              'hidden border rounded-md bg-transparent p-2 transition ease-in group-hover:flex focus:outline-none',
               {
                 'border-slate-400': copied,
-                'border-gray-600 hover:border-gray-400 focus:ring-4 focus:ring-gray-200/50 dark:border-gray-700 dark:hover:border-gray-400':
+                'border-gray-600 dark:border-gray-700 hover:border-gray-400 focus:ring-4 focus:ring-gray-200/50 dark:hover:border-gray-400':
                   !copied,
               },
             )}
           >
             <span
-              className={clsx('pointer-events-none h-4 w-4 i-mdi-content-copy', {
+              className={clsx('i-mdi-content-copy pointer-events-none h-4 w-4', {
                 block: !copied,
                 hidden: copied,
               })}
             />
             <span
-              className={clsx('pointer-events-none h-4 w-4 i-mdi-check', {
+              className={clsx('i-mdi-check pointer-events-none h-4 w-4', {
                 hidden: !copied,
                 block: copied,
               })}

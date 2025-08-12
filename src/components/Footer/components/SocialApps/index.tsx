@@ -11,7 +11,7 @@ const SocialApps = () => {
       href={url}
     >
       <span className="sr-only">{type}</span>
-      <span className={clsx('h-6 w-6 fill-current  transition-colors', STYLE[type as SNSType])} />
+      <span className={clsx('h-6 w-6 fill-current transition-colors', STYLE[type as SNSType])} />
     </a>
   ));
 };

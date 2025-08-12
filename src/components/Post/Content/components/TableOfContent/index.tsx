@@ -39,10 +39,10 @@ const TableOfContent = ({ source }: Props) => {
               type="button"
               className={clsx(
                 id === activeId
-                  ? 'font-medium text-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
-                  : 'font-normal text-gray-500 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100',
+                  ? 'text-primary-500 font-medium hover:text-primary-600 dark:hover:text-primary-400'
+                  : 'text-gray-500 font-normal dark:text-gray-300 hover:text-gray-600 dark:hover:text-gray-100',
                 level === 3 && 'pl-4',
-                'border-none bg-transparent mb-3 text-left text-sm transition-colors hover:underline',
+                'mb-3 border-none bg-transparent text-left text-sm transition-colors hover:underline',
               )}
               onClick={onClick(id)}
             >

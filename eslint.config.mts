@@ -17,8 +17,6 @@ const eslintConfig = [
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.mts", "**/*.mjs"],
     plugins: {
-      "@next/next": require("@next/eslint-plugin-next"),
-      "react-hooks": require("eslint-plugin-react-hooks"),
       prettier: require("eslint-plugin-prettier"),
     },
     rules: {

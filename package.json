@@ -12,6 +12,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
+  "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "clsx": "^2.1.1",
     "contentlayer2": "^0.5.3",
@@ -37,7 +38,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@iconify-json/mdi": "^1.2.3",
-    "@next/eslint-plugin-next": "15.1.6",
+    "@next/eslint-plugin-next": "^15.4.6",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.3.1",
     "@testing-library/user-event": "^14.6.1",

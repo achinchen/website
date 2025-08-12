@@ -27,9 +27,7 @@ function SeriesCard({ series, lang }: SeriesCardProps) {
               {t(series.status === 'completed' ? 'series_status_completed' : 'series_status_ongoing')}
             </div>
           </header>
-
           <p className="text-gray-600 dark:text-gray-300">{series.description}</p>
-
           <div className="text-sm text-gray-500 dark:text-gray-400">
             {getPostCountText(series.posts.length, t('series_post_count'), t('series_post_count_plural'))}
           </div>

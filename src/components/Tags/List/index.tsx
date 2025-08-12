@@ -22,7 +22,7 @@ function TagItem({ tag, lang, maxCount, minCount }: TagItemProps) {
   return (
     <Link
       href={`/${lang}/posts/tags/${tag.slug}`}
-      className={`${getTagSize(tag.count, maxCount, minCount)} px-4 py-2 rounded text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors decoration-none`}
+      className={`${getTagSize(tag.count, maxCount, minCount)} rounded px-4 py-2 text-gray-800 decoration-none transition-colors hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800`}
     >
       {tag.name}
       <span className="ml-2 text-sm text-gray-500 dark:text-gray-400">
