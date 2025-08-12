@@ -1,21 +1,14 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { LANGUAGE_LABELS, SUPPORTED_LANGUAGES, Language, DEFAULT_LANGUAGE } from '~/helpers/i18n/config';
+import { LANGUAGE_LABELS, SUPPORTED_LANGUAGES, Language } from '~/helpers/i18n/config';
 import { setUserLanguage } from '~/helpers/i18n';
+import { useCurrentLanguage } from '~/hooks';
 
 export default function LanguageSwitch() {
   const pathname = usePathname();
   const router = useRouter();
-
-  // Extract current language from URL path
-  const getCurrentLang = (): Language => {
-    const segments = pathname.split('/');
-    const langFromPath = segments[1];
-    return SUPPORTED_LANGUAGES.includes(langFromPath as Language) ? (langFromPath as Language) : DEFAULT_LANGUAGE;
-  };
-
-  const currentLang = getCurrentLang();
+  const currentLang = useCurrentLanguage();
 
   const onSwitch = (targetLang: Language) => {
     if (targetLang !== currentLang) {
