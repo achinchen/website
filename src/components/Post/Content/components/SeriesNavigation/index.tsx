@@ -20,7 +20,7 @@ export default function SeriesNavigation({ post }: SeriesNavigationProps) {
   const totalPosts = series.posts.length;
 
   return (
-    <div className="m-auto min-w-80vw md:max-w-3xl">
+    <div className="m-auto min-w-full">
       <div className="mb-4">
         <Link
           href={`/${post.lang}/posts/series/${series.slug}`}

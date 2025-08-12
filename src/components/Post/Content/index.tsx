@@ -65,14 +65,12 @@ export default function PostLayout({ post, next, previous }: Props) {
           </div>
         </aside>
       </div>
-
       {post.seriesSlug && (
         <Fragment>
           <SeriesInfo post={post} />
           <Divider className="text-center" />
         </Fragment>
       )}
-
       <PostNavigation next={next} previous={previous} lang={lang} />
     </article>
   );
