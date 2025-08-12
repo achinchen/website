@@ -9,7 +9,7 @@ export default function TagsList({ post }: TagsListProps) {
   if (!post.tags?.length) return null;
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="mb-12 mt-20 flex flex-wrap gap-3">
       {post.tags.map((tag) => (
         <Link
           key={`${tag}-${post.lang}`}

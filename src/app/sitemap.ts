@@ -118,7 +118,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   seriesBySlug.forEach((info, slug) => {
     sitemapEntries.push({
-      url: `${SITE.fqdn}/posts/series/${slug}`,
+      url: `${SITE.fqdn}/en/posts/series/${slug}`,
       lastModified: info.lastModified,
       alternates: {
         languages: {
@@ -145,7 +145,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   tagsBySlug.forEach((info, slug) => {
     sitemapEntries.push({
-      url: `${SITE.fqdn}/posts/tags/${slug}`,
+      url: `${SITE.fqdn}/en/posts/tags/${slug}`,
       lastModified: info.lastModified,
       alternates: {
         languages: {
