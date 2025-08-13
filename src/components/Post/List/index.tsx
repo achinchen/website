@@ -1,4 +1,3 @@
-import Balancer from 'react-wrap-balancer';
 import Link from '~/components/Link';
 import formatDate from '~/helpers/format-date';
 import { Post } from '~/helpers/get-posts';
@@ -32,12 +31,9 @@ export default function PostList({ posts }: Props) {
                     {T.readingUnit}
                   </span>
                 </header>
-                <Balancer
-                  as="p"
-                  className="max-w-none text-gray-500 transition-colors md:mt-1 dark:text-gray-400 md:leading-loose"
-                >
+                <p className="max-w-none text-gray-500 transition-colors md:mt-1 dark:text-gray-400 md:leading-loose">
                   {description}
-                </Balancer>
+                </p>
               </article>
             </Link>
           </li>
