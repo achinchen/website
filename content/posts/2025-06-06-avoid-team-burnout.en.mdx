@@ -16,189 +16,149 @@ tags:
   ]
 ---
 
-What would you do if a project required overtime to finish?
+## What Would You Do If a Project Needed Overtime?
 
-This is a story about someone who _really_ didn’t want to work overtime—but still cared deeply about getting things right.
+This is a story about someone who really didn’t want to work overtime—  
+but still cared deeply about getting things right.
+
 
 ## A New Thought Process
 
-After [hitting a wall with the framework upgrade](/en/posts/turn-frustration-into-team-alignment), I began thinking about alternative ways to support the current system and future service separation.
+After [hitting a wall with the framework upgrade](/en/posts/turn-frustration-into-team-alignment), I began looking for other ways to support the current system and prepare for future service separation.
 
-One direction that emerged was a **CSS framework migration**.
+One promising direction was a **CSS framework migration**.
 
-In the absence of formal software engineering management practices, it’s common to see multiple solutions applied to the same problem. In frontend work, this can be especially dangerous—since client-side assets directly impact page performance.
+Without formal engineering management practices, it’s easy to end up with multiple solutions to the same problem.  
+In frontend work, this can be especially costly—since client-side assets directly affect performance.
 
-At the time, the project was using _three different CSS frameworks_—a total nightmare for any frontend engineer.
+At the time, our project used **three different CSS frameworks**—a nightmare for any frontend engineer.
 
-Every time we got a new design, we had to first figure out which set of components and styles it was referencing.
-It was inefficient, error-prone, and painful to maintain.
-Not to mention the performance cost of loading redundant styles.
+Every new design meant figuring out which set of components and styles it referenced.  
+It was inefficient, error-prone, and painful to maintain—plus the performance hit from loading redundant styles.
 
-This wasn’t a new issue—I’d seen it in my previous job and had led similar refactor efforts.
+I’d seen this problem before, and had led similar refactors in a previous job.
 
-## What's More Important Than Performance
 
-While performance was a concern, the deeper issue for me was structural.
+## What’s More Important Than Performance
 
-Some parts of the implementation directly coupled business logic with UI components provided by external libraries.
-There was no abstraction layer—making it difficult to switch frameworks or update the design system in the future.
+Performance was a concern, but the deeper issue was structural.
 
-I didn’t believe any of the existing CSS frameworks were long-term solutions.
-For a mature B2C product, the logical next step is often a custom UI layer that’s optimized and lean.
+Some implementations directly coupled business logic with UI components from external libraries.  
+Without an abstraction layer, switching frameworks or updating the design system later would be painful.
 
-But we didn’t have the resources to go that far.
-So I proposed a more pragmatic solution: **standardize on a single framework**.
+I didn’t believe any of the current frameworks were long-term solutions.  
+For a mature B2C product, a custom UI layer—optimized and lean—is often the logical next step.
 
-I defined three key goals:
+But without the resources for that, I proposed a pragmatic alternative: **standardize on a single framework**.
 
-- Normalize the abstraction layer between business logic and UI
-- Reduce ambiguity in design/implementation discussions
-- Eliminate unnecessary decision-making during development
+Three key goals:
+
+- Normalize the abstraction layer between business logic and UI  
+- Reduce ambiguity in design/implementation discussions  
+- Eliminate unnecessary decision-making during development  
+
 
 ## How to Deliver Without Overtime
 
-The company wasn’t ready to allocate dedicated resources to this project.
-So I worked with the not-yet-official **Platform Team**, using just 50% of their capacity.
-Team composition shifted week by week, depending on project priorities.
+The company wouldn’t allocate dedicated resources.  
+I worked with the not-yet-official **Platform Team**, using just 50% of their capacity.  
+Team composition shifted weekly, depending on priorities.
 
-Managing this project was already challenging—
-But things got worse at 30% completion.
-
-We estimated we’d need two more quarters to finish.
-Too long.
-Too risky.
-The project might be cut at any time.
+At 30% completion, things got tricky.  
+We estimated two more quarters to finish—too long and too risky.  
+The project could be cut at any time.
 
 ## I Refused to Burn Out the Team
 
-I didn’t want to let the work go to waste.
-I also believe that every piece of technical debt we repay is a chance to build a better foundation.
+I didn’t want to waste the effort already spent.  
+Every piece of tech debt we repay is a chance to build a stronger foundation.
 
-But I wasn’t going to sacrifice my teammates’ time and health to achieve that.
-
-This was _my_ vision, not theirs.
+But I wasn’t going to sacrifice my teammates’ health to do it.  
+This was my vision, not theirs.
 
 So I asked myself:
 
-> If every frontend developer will benefit from this,
+> If every frontend developer will benefit,  
 > why not let them participate?
 
-Instead of having people passively consume the outcome,
-what if they actively contributed?
+If people helped build it, they’d also help sustain it.
 
-That would also make it easier to enforce and sustain new standards.
+I spoke with R, my manager, about product team availability.  
+We devised a new collaboration model—later the prototype for Platform–Product team work.
 
-<Spacer />
+I acted as **project owner** and **tech lead**, managing code reviews and technical decisions.
 
-I spoke with my manager R to understand product team availability, and we devised a new collaboration model—
-which later became the prototype for how Platform and Product teams would work together.
+Each week, I broke down work into well-scoped tasks, synchronized across teams, and aligned on staffing and delivery.
 
-I served as both **project owner** and **tech lead**,
-managing code reviews and technical decisions.
+This sped up progress so much that R assigned more engineers—letting us finish the migration *that same quarter*.
 
-Each week, I broke down work into appropriately scoped tasks,
-synchronized across teams, and aligned on staffing and delivery.
-
-This structure sped up the project significantly.
-R even assigned more engineers to help, enabling us to complete the migration _that same quarter_.
 
 ## More Resources = Finish Faster?
 
-If things ended there, this would’ve been a happy-ending story.
+If that were the end, it would be a happy story.
 
-But let me remind you of the original question:
+But when a manager adds resources, they’re not saying:  
+“Take your time and do a great job.”
 
-> If a project requires overtime to finish, do you do it?
+They’re thinking:  
+“How can we do this faster and better?”
 
-When a manager adds resources, they’re rarely saying:
-"Take your time and do a great job."
-
-They’re thinking:
-"How can we do this _faster_ and _better_?"
-
-<Spacer />
-
-In the days following the resource increase, R checked in with me frequently about staffing and timelines.
-
+R checked in often about staffing and timelines.  
 I understood his pressure.
 
-But I had my own quiet hopes:
+But I also wanted this project to grow our teammates’ skills—especially in UI engineering and design collaboration.  
+Focusing only on the deadline would lose that chance.
 
-Yes, I wanted to pay down tech debt.
-But I also wanted this project to help teammates grow—especially in UI engineering and design collaboration.
-
-If we focused solely on hitting the delivery date,
-we’d lose the chance to build technical maturity.
 
 ## Switching Gears
 
-When R asked again about the timeline,
-I told him honestly that I needed time to think—
-but I’d bring a plan the next day.
+When R asked again about the timeline, I told him I’d bring a plan the next day.
 
 That night, I shifted into **project management mode**.
 
-From the company's perspective, this migration needed to be visible—something upper management could recognize.
-That’s a **functional requirement**.
+From the company’s perspective, the migration needed to be visible to upper management—**a functional requirement**.  
+But the deeper value—less decision fatigue, more consistency—was a **non-functional requirement**.
 
-But the deeper value—less decision fatigue, better consistency—was more of a **non-functional requirement**.
+Could we split delivery into **phases**?
 
-I asked:
-Can we split delivery into **phases**?
+Looking into the CSS framework’s source, I found a workaround:  
+By moving certain components into the codebase, we could defer deeper refactoring to next quarter—while still showing visible improvements now.
 
-<Spacer />
+It met the “immediate results” need *and* protected the team’s health.
 
-I examined the CSS framework’s source code and found a workaround.
+I adjusted the plan, got R’s approval, and realigned staffing.  
+We shipped the migration **without overtime**. (Whew.)
 
-By relocating certain components into the codebase itself,
-we could defer deeper refactoring until next quarter—
-but still show visible improvements now.
 
-This approach satisfied the business need for “immediate results,”
-while preserving the team’s health and long-term goals.
+## My First Fully Owned Large-Scale Project
 
-I adjusted our execution plan, got R’s approval, and realigned staffing.
-In the end, we shipped the migration—**without overtime**. (Whew.)
+I managed shifting resources, strategic pivots, architectural decisions, and over **13 developers**.  
+Weekly, I handled task planning, code reviews, and stakeholder updates—working closely with R to keep cross-team participation steady.
 
-<Spacer />
-
-This was my first large-scale project at the company where I was fully in charge.
-
-I managed shifting resources, handled strategic pivots, guided architectural decisions, and collaborated with over **13 developers**.
-
-Every week involved task planning, code reviews, and stakeholder updates.
-I coordinated closely with R to ensure stable cross-team participation.
 
 ## Toward Engineering Culture
 
-Looking back, this wasn’t just about fixing performance issues.
+This wasn’t just about performance.  
 It laid the groundwork for future service separation.
 
-More importantly, it changed how I think:
+More importantly, it changed my thinking:
 
-> Why are we doing this?
+> Why are we doing this?  
 > How do we make sure our future selves are glad we did?
 
-I started out trying to fix maintainability and performance.
-But I realized that real change isn’t powered by solo effort alone.
+I started out fixing maintainability and performance.  
+I ended up learning that lasting change needs:
 
-To drive lasting impact, you need:
+- Well-designed systems  
+- Strategic planning  
+- Flexible resource allocation  
 
-- Well-designed systems
-- Strategic planning
-- Flexible resource allocation
+This brought me closer to the **core of engineering management**:  
+Building stability in a world of constant change.
 
-<Spacer />
+The lessons were worth more than the output.  
+And the trust I earned became fuel for even bigger changes later.
 
-This brought me closer to the **core of software engineering management**:
-Building a stable base in a world full of change.
-
-The lessons I gained were worth far more than the output itself.
-
-<Spacer />
-
-The trust I earned along the way became the fuel for even bigger changes down the road.
-
-At the time, I didn’t realize it.
+At the time, I didn’t know it.
 
 > But this was just the beginning.

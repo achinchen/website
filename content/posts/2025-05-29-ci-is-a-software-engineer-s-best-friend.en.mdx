@@ -16,227 +16,176 @@ tags:
   ]
 ---
 
-Do you remember your first encounter with CI (Continuous Integration)?
+## Do You Remember Your First Encounter with CI?
 
-- Was it mentioned in the onboarding docs when you learned your team used a CI/CD pipeline?
-- Did you only notice it when your local server wouldn’t start due to a pipeline error?
-- Or maybe your pull request got blocked by a ❌ and that’s when you realized—This is what a CI check looks like in action.
+Was it in the onboarding docs, where you learned your team used a CI/CD pipeline?  
+Did you notice it only when your local server wouldn’t start because of a pipeline error?  
+Or maybe your pull request got blocked by a ❌, and that’s when you realized—*this is what a CI check looks like in action*.
 
-When CI works properly, it tends to stay in the background—like a quiet member of the family.
-But when it breaks? It can be louder than a blender.
+When CI works, it stays in the background—like a quiet member of the family.  
+When it breaks? It’s louder than a blender.
+
 
 ## The Hidden Landmine
 
-For example, when I joined this company, I discovered that the main project’s formatter settings were inconsistent.
+When I joined this company, I found the main project’s formatter settings were inconsistent.  
+Running locally, each person’s machine produced different results.
 
-That is—after running locally, each person’s machine would produce different results.
-
-Why does this matter?
-You might argue that formatters don’t affect logic, so it shouldn't be a big deal.<Spacer />
-But in practice, this made every PR a mess.
-The diffs were noisy, full of formatting changes, and made it painfully hard to tell what was _actually_ being modified.
+You might say formatters don’t affect logic, so it’s no big deal.  
+But in practice, every PR became a mess—full of noisy diffs that made it hard to see the *real* changes.
 
 Reviewing PRs became mentally exhausting.
 
+
 ## Fast Agree on Our Disagreement
 
-I tolerated it for a while.
-But after reviewing a few more of those messy PRs, I couldn’t ignore it anymore.
+I put up with it for a bit.  
+But after a few more messy reviews, I started asking around—turns out, everyone thought it was annoying.
 
-So I started asking teammates how they felt and found out that everyone thought it was annoying too.
+Technically, unifying the formatter config wasn’t hard.  
+The real challenge was figuring out **why** we had differences:
 
-<Spacer />
-Technically, unifying the formatter config wasn’t hard. The hard part was
-figuring out **why** things were different in the first place.
+- Machine settings?  
+- Personal style preferences?  
 
-- Was it machine settings?
-- Personal style preferences?
-
-<Spacer />
-
-That’s when I learned a surprisingly useful collaboration strategy:
+That’s when I learned a useful collaboration move:
 
 > **Fast agree on our disagreement.**
 
-Not everyone cares about the same formatting rules.
-Some don’t mind import order. Others swear by single vs. double quotes.
+Not everyone cares about the same formatting rules.  
+But small differences generate *a lot* of noise.
 
-These things seem small, but they generate a _lot_ of noise.
 
 ## The Minimum Acceptable Baseline
 
-We didn’t have much time to waste on style debates. So instead of **waiting for consensus before action**, I tried the opposite: **Take action, build consensus later.**
+We didn’t have time for endless style debates.  
+So instead of waiting for consensus before acting, I flipped it: **Act first, build consensus later.**
 
-<Spacer />
+I drafted a formatter config targeting the biggest sources of diff chaos—rules that could be auto-fixed.  
+I asked teammates to apply it locally and share screenshots to confirm alignment.
 
-I drafted a formatting fix proposal focused on the most common sources of diff chaos—rules that could be auto-fixed. I shared a config file, asked teammates to apply it locally, and send screenshots to confirm alignment.
+It wasn’t perfect consensus, but it was a concrete starting point.
 
-It wasn’t a consensus-from-scratch approach, but it gave us a concrete starting point.
-
-<Spacer />
-
-I named the project:
+I called it:
 
 > **The Minimum Acceptable Formatter Baseline**
 
-This was my first real "cut" into CI.
+This was my first real “cut” into CI.
+
 
 ## From Formatter to Linter
 
-Next, I moved on to updating our coding guidelines.
-Some rules had become implicit knowledge. Others were outdated.
+Next, I updated our coding guidelines.  
+Some rules had turned into implicit knowledge. Others were outdated.
 
-Initially, I just wanted to be lazy and let the machine catch small mistakes for me.
-But once I reviewed our linter config, I realized some checks no longer reflected our current standards—and no one remembered why they existed.
+Initially, I just wanted to let the machine catch small mistakes for me.  
+But reviewing our linter config, I saw checks that no longer matched our standards—and no one remembered why they existed.
 
 That’s when it clicked:
 
-> **CI tools need regular maintenance too.**
+> **CI tools need maintenance too.**
 
-If the team already agrees on certain rules, we should automate them.
-Don’t waste human effort reviewing what a linter can catch.
+If we agree on certain rules, we should automate them.  
+Don’t waste human review on what a linter can handle.
 
-<Spacer />
+So I updated the linter config, handing enforcement to CI—where it belongs.
 
-So I updated the linter config to reflect current standards—
-handing off enforcement to CI, where it belongs.
+Back to the main principle:
 
-Back to the original goal:
+> **Strategic laziness.**  
+> Expose problems earlier. Shift left.  
+> CI isn’t just a checklist—it’s an early warning system.
 
-> **Strategic laziness.**
-
-Expose problems earlier.
-Shift left.
-CI isn’t just a checklist tool—it’s an early-warning system.
 
 ## Monorepo Brings New Complexity
 
-By now, CI was saving me a lot of mental overhead.
+By now, CI was saving me a lot of mental overhead.  
+But complexity doesn’t stay quiet.
 
-But complexity never stays quiet for long.
-
-As we moved to a monorepo structure to support multiple new services, cross-module interactions became harder to track.
-
-I needed a way to trace which modules were affected by each change—without making developers suffer.
-
-<Spacer />
+As we moved to a monorepo supporting multiple services, cross-module changes became harder to track.
 
 I introduced:
 
-- **Commit linting** for semantic commit messages
-- **semantic-release** to parse commits
-- Automatic version bumps and changelog generation
+- **Commit linting** for semantic commit messages  
+- **semantic-release** to parse commits  
+- Automatic version bumps and changelog generation  
 
-This made versioning cleaner and took the burden off manual releases.
+Versioning got cleaner, and manual release pain dropped.  
+It also helped leadership see the value of microservices and start thinking about **platform engineering**.  
+A small win with big ripples.
 
-<Spacer />
-
-That project helped showcase the value of microservices internally—
-and got leadership thinking about **platform engineering**.
-A small win, with big ripples.
 
 ## CI as Gatekeeper
 
-But of course, the story doesn’t end there.
+Then came the incidents:  
+Product team changes core logic.  
+Reviewer misses it.  
+Things break.  
+Leadership asks me for a fix.
 
-A few times, someone from the product team modified core logic.
-The reviewer missed it.
-Things broke.
-Leadership asked me for a fix.
+I turned to [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)—assigning specific reviewers to files or directories.
 
-<Spacer />
+Now, when critical code changes, CI auto-assigns the right reviewer.  
+Coverage became predictable.
 
-I turned to **GitHub’s [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)** feature—
-a way to assign specific reviewers to particular files or directories.
-
-Now, when critical code is touched, CI auto-assigns the right reviewer.
-No more relying on memory or random tagging.
-Review coverage became predictable.
 
 ## Share the Load
 
-But I knew better than to assign all responsibility to the expert.
-So I used **group-level ownership**, like `@platform-core` or `@design-system`.
+To avoid overloading one person, I used **group-level ownership** like `@platform-core` or `@design-system`.
 
-This enabled:
+This allowed:
 
-- Reviewer rotation
-- Load balancing
-- Easier onboarding and knowledge transfer
-- Reduced single points of failure
+- Reviewer rotation  
+- Load balancing  
+- Easier onboarding  
+- Fewer single points of failure  
 
-<Spacer />
+With branch protection, merges required approval from a CODEOWNER.  
+Strict? Yes—but it set a clear baseline.
 
-Combined with GitHub’s branch protection rules, we required approval from the assigned CODEOWNER before merging.
+I made sure to add:
 
-It might sound strict, but to me, this was:
+> “If this causes friction, tell me. We’ll adjust.”
 
-> **CI reclaiming its role as a proper gatekeeper.**
-
-<Spacer />
-
-Before rolling all this out, I had doubts.
-
-Everyone’s busy.
-Overly rigid workflows can create pushback or bottlenecks.
-
-But in the end, I chose:
-
-> **Tighter control first—relax later.**
-
-<Spacer />
-
-Because tightening gradually feels like regression.
-Starting strict provides a clear baseline.
-
-To ease the rollout, I added a note:
-
-> “If this causes friction or makes your work harder, please let me know. I’ll adjust as needed.”
 
 ## Reshaping the Workflow
 
-This entire journey taught me:
+The big takeaway:
 
-> **Process design is not just a technical problem.**
-> It’s a human one—requiring empathy, flexibility, and room for iteration.
+> **Process design isn’t just technical—it’s human.**
 
-Changing CI doesn’t require deep tech skills.
-But what it _represents_—a shift in workflow, mindset, and culture—that’s the real challenge.
+Changing CI doesn’t need deep tech skills.  
+But it does change workflows, mindsets, and culture.
 
-Change-makers may get praised,
-but they’ll also face pushback,
-and it’s our job to understand what’s behind that resistance—and address it.
+And change brings both praise and pushback.  
+Our job is to understand that resistance—and address it.
 
-That’s when I truly understood CI’s value:
+That’s when I really understood CI’s value:
 
-> **It’s not just automation.
-> It’s about making the invisible visible, and turning ambiguity into evolution.**
+> **It’s not just automation.  
+> It’s making the invisible visible, and turning ambiguity into evolution.**
 
 <Spacer />
 
-Behind all these CI-related improvements, there’s really just one goal:
+Behind all the CI improvements, my goal was simple:
 
-> **Protect our limited cognitive bandwidth.**
-> Free up attention for where human judgment is needed—
-> Not for things machines can do better.
+> **Protect our limited cognitive bandwidth.**  
+> Save human attention for where judgment matters—not for what machines can do better.
 
-That realization led me into the next phase of my career—
-Thinking deliberately about how software engineering culture is shaped.
+That mindset pushed me into the next phase of my career:  
+Thinking deliberately about how engineering culture is shaped.
+
 
 ## Final Thoughts
 
-People have asked me:
-“Isn’t all this CI work kind of tedious?”
+People ask:  
+“Isn’t CI work tedious?”
 
-Of course it is.
+Of course it is.  
+But if we don’t clear noise at the foundation, we can’t focus on what matters.
 
-But if we don’t clear the noise at the foundation,
-we can’t focus on what actually matters.
-
-<Spacer />
-
-That’s what CI gives us:
+That’s what CI gives us:  
 **The space to pay attention to what’s worth it.**
 
-I don’t know if this mindset shift will take me all the way to Staff.
-But I do know—this is the kind of software engineer I want to be.
+I don’t know if this mindset will take me to Staff.  
+But I know—it’s the kind of engineer I want to be.

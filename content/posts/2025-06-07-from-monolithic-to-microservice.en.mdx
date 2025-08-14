@@ -16,108 +16,103 @@ tags:
   ]
 ---
 
-Opportunities rarely come announced.
+Opportunities rarely announce themselves.
+
 Can you recognize one when it shows up?
 
-Honestly, I’m not always sure I can.
-But this time, I did—and it became the inflection point for introducing microservices at our company.
+I’m not always sure I can.  
+But this time, I did—and it became the turning point for introducing microservices at our company.
 
-<Spacer />
 
-It all started in the months following [this story about avoiding team burnout](/en/posts/avoid-team-burnout).
-Not long after we wrapped that project, the team experienced a significant wave of resignations, morale dropped, direction felt unclear, and watching great colleagues leave one after another, I seriously considered quitting too.
+## From Burnout Recovery to Possibility
 
-But due to personal circumstances, I couldn’t leave just yet.
-Still, I didn’t want to be a warm-body paycheck thief either.
-So I started scheduling 1:1s with engineers from other teams, hoping conversations might reveal new possibilities.
+It started in the months after [avoiding team burnout](/en/posts/avoid-team-burnout).  
+Not long after we wrapped that project, a wave of resignations hit.  
+Morale dropped. Direction felt unclear. Watching great colleagues leave one by one, I seriously considered quitting too.
 
-<Spacer />
+But due to personal circumstances, I couldn’t leave yet.  
+Still, I didn’t want to be a warm-body paycheck collector.
 
-One of those chats was with K, an engineering manager and longtime collaborator.
-He mentioned that the product team wanted to rebuild our customer support system.
-But if that wasn’t possible, they’d have to shove it into an aging legacy system—a known nightmare.
+So I began scheduling 1:1s with engineers from other teams, hoping conversations might uncover new possibilities.
 
-My gut reaction? Please, anything but that.
 
-But then another thought immediately surfaced:
+## The Chance Conversation
 
-> Wait… isn’t this the perfect chance to push for **Monorepo-based microservices**?
+One chat was with K, an engineering manager I’d worked with before.  
+He mentioned the product team wanted to rebuild our customer support system.  
+If that wasn’t possible, they’d have to shove it into an aging legacy system—a known nightmare.
+
+My gut reaction? Please, anything but that.  
+Then another thought hit me:
+
+> Isn’t this the perfect chance to push for **Monorepo-based microservices**?
+
 
 ## A Strategic Pilot
 
-So K and I worked together on a proposal:
-Use **Monorepo architecture** to build the new support system.
+K and I proposed building the new support system on **Monorepo architecture**.
 
 This wasn’t just a technical decision—it was a strategic move toward microservices.
 
-Back during the [failed upgrade project](/en/posts/turn-frustration-into-team-alignment), I had already done significant research:
-service decomposition, shared micro-frontend strategies, monorepo vs. polyrepo trade-offs.
-But theory alone means little without implementation.
+Back during the [failed upgrade project](/en/posts/turn-frustration-into-team-alignment), I’d researched service decomposition, micro-frontend strategies, and monorepo vs. polyrepo trade-offs.  
+But theory is nothing without implementation.
 
-The company had long relied on a monolithic architecture. Unless you could prove massive ROI, new architecture proposals rarely got approved. But this support system belonged to a non-core domain—no existing service to migrate, no immediate user pressure. It was the perfect low-stakes environment to test Monorepo and service separation strategies.
+The company had relied on a monolithic architecture for years.  
+Without proof of massive ROI, new architecture proposals rarely got approved.  
+But this support system was non-core—no existing service to migrate, no heavy user pressure—making it the perfect low-stakes environment to test Monorepo and service separation strategies.
 
-<Spacer />
+We started fresh with a new repo, using it to validate our CICD pipelines and assess whether Monorepo could deliver clearer workflows and better scalability.
 
-We started fresh with a new repo, using it to validate our CICD pipelines and assess whether Monorepo could deliver clearer development workflows and better scalability.
+It was the testbed I’d been waiting for.
 
-This wasn’t just infrastructure—it was a testbed for everything I’d been preparing for.
+The risk?  
+If Monorepo failed here, convincing others to try again would be far harder.  
+If the support system didn’t meet expectations, trust in the architecture would drop to zero.
 
-Of course, there was real pressure too:
-If this Monorepo rollout failed, it would be _much_ harder to make the case again.
-If the support system didn’t meet expectations under the new setup, who would trust this architecture for their projects?
+This was more than tech risk—it was a bet on team morale and future adoption.  
+I wanted the project to deliver not just a usable system, but proof that **architectural transformation could improve delivery** and be worth investing in.
 
-This wasn’t just a tech risk.
-It had implications for team morale and future adoption.
-I wanted the project to deliver not just a usable system, but a proof point that **architectural transformation could improve delivery** and be worth investing in.
 
 ## First Wins
 
-Fortunately, this story had a strong start.
+As **Project Owner**, I ensured our Monorepo setup could support real-world service development.
 
-As **Project Owner**, I was responsible for ensuring our Monorepo setup could support real-world service development.
-K and I collaborated on breaking down the support system roadmap.
-I reviewed system designs, mapped out the microservice infrastructure we needed, and partnered with the newly formed platform team to get things built.
+K and I broke down the roadmap, I reviewed system designs, mapped out the microservice infrastructure we needed, and worked with the new platform team to build it.
 
-To ensure the architecture aligned with actual product needs, I joined early product team planning sessions. That let me collect feedback and adjust the architecture accordingly.
+To keep architecture aligned with product needs, I joined early planning sessions.  
+In return, I supported delivery planning for the support system itself—because customer success = architectural success 😄
 
-In exchange, I supported delivery planning for the support system itself—because customer success = architectural success 😄
+We hit friction along the way.  
+That friction sparked a [two-year internal knowledge-sharing initiative—60+ sessions](/en/posts/knowledge-sharing-journey) that reshaped our team culture. (A story for another time.)
 
-<Spacer />
+Through this pilot, we built a team capable of handling complex CICD, defining internal code conventions, creating architecture libraries, and delivering services.  
+The successful first release of this client-facing system formally established Monorepo as our new standard—and gave the company visible proof of its value.
 
-We did hit friction.
+Other teams soon followed.
 
-That led to a [two-year internal knowledge-sharing initiative—60+ sessions](/en/posts/knowledge-sharing-journey), reshaping our team culture. (But that’s a story for another time.)
-
-Through this pilot, we built a team that could handle complex CICD, design internal code conventions, build architecture libraries, and deliver services.
-The successful first release of this client-facing system formally established Monorepo as our new standard—and gave the company real, visible proof of its value.
-
-More teams followed.
 
 ## Team-Level and Personal Shift
 
-Ironically, it was the very inability to quit that forced me to find a breakthrough.
-The result? A long-standing dream—**pushing microservices**—became reality.
+Ironically, it was the inability to quit that pushed me to find a breakthrough.  
+The result? My long-standing goal—**pushing microservices**—became reality.
 
-This wasn’t just about scalability or developer experience.
-It marked a step change for our engineering team.
-One where we were finally equipped to take on more complex, evolving challenges.
+This wasn’t just about scalability or DX.  
+It marked a shift for our engineering team, equipping us to take on more complex, evolving challenges.
 
-<Spacer />
-
-In both product design and delivery process, this experience reinforced one of my core beliefs in software engineering:
+It reinforced one of my core beliefs in software engineering:
 
 > Resilience isn’t just a goal—it’s a foundation.
 
-<Spacer />
+By treating this as a training ground, I gave teammates a chance to grow through meaningful challenges—building skills they’d carry well beyond this project.
 
-And by treating this as a training ground, I gave teammates a chance to grow through meaningful challenges—gaining skills they’d carry with them well beyond this project.
+That unspoken impact remains one of my proudest deliverables.
 
-That unspoken impact was one of my proudest deliverables.
-All of this started because I didn’t want to sit around doing the bare minimum.
 
-<Spacer />
+## The Outcome
 
-After this project, I was officially promoted to **Staff Engineer**.
-Though that came with its own new question:
+All this started because I refused to sit around doing the bare minimum.  
+The project’s success led to my promotion to **Staff Engineer**.
 
-> Am I _really_ ready to be a Staff?
+But with that came a new question:
+
+> Am I *really* ready to be a Staff?
