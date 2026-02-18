@@ -10,8 +10,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function GET(request: NextRequest, { params }: { params: Promise<{ lang: Language }> }) {
-  const { lang } = await params;
+export async function GET(request: NextRequest, { params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = (await params) as { lang: Language };
   return new Response(getFeed('JSON', lang), {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
