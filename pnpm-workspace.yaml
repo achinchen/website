@@ -1,9 +1,10 @@
 packages:
   - "."
 
-onlyBuiltDependencies:
-  - contentlayer2
-  - esbuild
-  - protobufjs
-  - rehype-code-titles
-  - sharp
+allowBuilds:
+  contentlayer2: false
+  esbuild: false
+  protobufjs: false
+  rehype-code-titles: false
+  sharp: false
+  unrs-resolver: false
