@@ -118,12 +118,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   seriesBySlug.forEach((info, slug) => {
     sitemapEntries.push({
-      url: `${SITE.fqdn}/en/posts/series/${slug}`,
+      url: `${SITE.fqdn}/en/series/${slug}`,
       lastModified: info.lastModified,
       alternates: {
         languages: {
-          en: `${SITE.fqdn}/en/posts/series/${slug}`,
-          zh: `${SITE.fqdn}/zh/posts/series/${slug}`,
+          en: `${SITE.fqdn}/en/series/${slug}`,
+          zh: `${SITE.fqdn}/zh/series/${slug}`,
         },
       },
     });

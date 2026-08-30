@@ -19,7 +19,7 @@ function SeriesCard({ series, lang }: SeriesCardProps) {
 
   return (
     <div className="group list-none transition-colors">
-      <Link href={`/${lang}/posts/series/${series.slug}`} className="decoration-none">
+      <Link href={`/${lang}/series/${series.slug}`} className="decoration-none">
         <article className="border border-gray-200 rounded-lg p-6 text-gray-800 transition-colors space-y-4 dark:border-gray-700 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-800">
           <header className="flex items-center justify-between">
             <h2 className="text-xl font-semibold">{series.name}</h2>

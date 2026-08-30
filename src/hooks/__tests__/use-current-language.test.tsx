@@ -63,7 +63,7 @@ describe('useCurrentLanguage', () => {
   });
 
   it('should handle nested paths correctly', () => {
-    mockUsePathname.mockReturnValue('/en/posts/series/my-series');
+    mockUsePathname.mockReturnValue('/en/series/my-series');
 
     const { result } = renderHook(() => useCurrentLanguage());
 
@@ -195,7 +195,7 @@ describe('useLanguageAwareHomeUrl', () => {
   });
 
   it('should handle deeply nested paths', () => {
-    mockUsePathname.mockReturnValue('/zh/posts/series/my-series/part-1');
+    mockUsePathname.mockReturnValue('/zh/series/my-series/part-1');
 
     const { result } = renderHook(() => useLanguageAwareHomeUrl());
 

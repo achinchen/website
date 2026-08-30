@@ -41,7 +41,7 @@ function generateFeed(lang: Language = DEFAULT_LANGUAGE) {
     const seriesInfo = series
       ? {
           series: series.name,
-          seriesUrl: `${SITE.fqdn}/${lang}/posts/series/${series.slug}`,
+          seriesUrl: `${SITE.fqdn}/${lang}/series/${series.slug}`,
           seriesOrder: post.seriesOrder || undefined,
           seriesStatus: series.status,
         }

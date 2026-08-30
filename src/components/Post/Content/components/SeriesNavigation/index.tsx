@@ -23,7 +23,7 @@ export default function SeriesNavigation({ post }: SeriesNavigationProps) {
     <div className="m-auto min-w-full">
       <div className="mb-4">
         <Link
-          href={`/${post.lang}/posts/series/${series.slug}`}
+          href={`/${post.lang}/series/${series.slug}`}
           className="mb-3 mr-2 text-xl text-gray-800 font-semibold decoration-none transition-colors dark:text-gray-200 dark:text-gray-300 hover:text-gray-900 hover:underline dark:hover:text-gray-200"
         >
           {t('series')}: {series.name}
