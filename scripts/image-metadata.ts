@@ -1,16 +1,14 @@
-import type { Visitor } from "unist-util-visit";
-import imageSize from "image-size";
-import path from "path";
-import { getPlaiceholder } from "plaiceholder";
-import { visit } from "unist-util-visit";
-import { promisify } from "util";
+import type { Visitor } from 'unist-util-visit';
+import { imageSizeFromFile } from 'image-size/fromFile';
+import path from 'path';
+import { getPlaiceholder } from 'plaiceholder';
+import { visit } from 'unist-util-visit';
 
 type Node = Parameters<Visitor>[0];
 
-const sizeOf = promisify(imageSize);
 interface ImageNode extends Node {
-  type: "element";
-  tagName: "img";
+  type: 'element';
+  tagName: 'img';
   properties: {
     src: string;
     height?: number;
@@ -21,28 +19,18 @@ interface ImageNode extends Node {
 
 function isImageNode(node: Node): node is ImageNode {
   const img = node as ImageNode;
-  return (
-    img.type === "element" &&
-    img.tagName === "img" &&
-    img.properties &&
-    typeof img.properties.src === "string"
-  );
+  return img.type === 'element' && img.tagName === 'img' && img.properties && typeof img.properties.src === 'string';
 }
 
 function filterImageNode(node: ImageNode): boolean {
-  return node.properties.src.startsWith("/");
+  return node.properties.src.startsWith('/');
 }
 
 async function addMetadata(node: ImageNode): Promise<void> {
-  const res = await sizeOf(
-    path.join(process.cwd(), "public", node.properties.src),
-  );
+  const res = await imageSizeFromFile(path.join(process.cwd(), 'public', node.properties.src));
 
   if (!res) throw Error(`Invalid image with src "${node.properties.src}"`);
-  const { base64 } = await getPlaiceholder(
-    node.properties.src as unknown as Buffer,
-    { size: 10 },
-  ); // 10 is to increase detail (default is 4)
+  const { base64 } = await getPlaiceholder(node.properties.src as unknown as Buffer, { size: 10 }); // 10 is to increase detail (default is 4)
 
   node.properties.width = res.width;
   node.properties.height = res.height;
@@ -53,7 +41,7 @@ export default function imageMetadata() {
   return async function transformer(tree: Node) {
     const imgNodes: ImageNode[] = [];
 
-    visit(tree, "element", (node) => {
+    visit(tree, 'element', (node) => {
       if (isImageNode(node) && filterImageNode(node)) {
         imgNodes.push(node);
       }
